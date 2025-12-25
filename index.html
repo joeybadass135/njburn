@@ -116,6 +116,17 @@
             fill: var(--flag-white);
         }
 
+        .motto {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bold;
+            color: var(--flag-white);
+            margin-top: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px #333;
+        }
+
         /* MARQUEE - Classic retro element */
         .marquee-container {
             background-color: var(--flag-red);
@@ -270,6 +281,7 @@
             }
             .logo-nj { font-size: 1.5rem; }
             .logo-burn { font-size: 3rem; }
+            .motto { font-size: 1rem; }
         }
     </style>
 </head>
@@ -296,7 +308,13 @@
 
             <span class="logo-burn">BURN</span>
         </div>
-        <div style="font-family: 'Courier New'; letter-spacing: 4px; margin-top: 10px;">EST. 2024</div>
+        
+        <!-- Added Motto -->
+        <div class="motto">
+            A SINGLE SPARK CAN START A PRAIRIE FIRE
+        </div>
+        
+        <div style="font-family: 'Courier New'; letter-spacing: 4px; margin-top: 10px; font-size: 0.8rem;">EST. 2024</div>
     </header>
 
     <!-- SCROLLING MARQUEE -->
@@ -315,11 +333,13 @@
                 <div class="sidebar-title">MAIN MENU</div>
                 <ul class="nav-list">
                     <li><a href="#">Home Page</a></li>
-                    <li><a href="cybersecurity.html">Cybersecurity Guide</a></li>
+                    <!-- Link to the Cybersecurity page -->
+                    <li><a href="cybersecurity.html">Cybersecurity</a></li>
                     <li><a href="#chapters">Our Chapters</a></li>
                     <li><a href="https://instagram.com/nj.burn" target="_blank">Instagram (@nj.burn)</a></li>
                     <li><a href="#">Guestbook</a></li>
-                    <li><a href="#">Contact Webmaster</a></li>
+                    <!-- UPDATED: Contact Webmaster replaced with Substack -->
+                    <li><a href="https://njburn.substack.com" target="_blank">Substack</a></li>
                 </ul>
             </div>
 
@@ -330,7 +350,10 @@
                 <div style="text-align: left; font-size: 0.85rem; line-height: 1.4;">
                     <!-- Trenton Event -->
                     <div style="margin-bottom: 10px;">
-                        <strong style="text-decoration: underline;">Trenton M.A.K.E.S</strong><br>
+                        <!-- ADDED LINK HERE TOO -->
+                        <a href="https://instagram.com/trent0nmakes" target="_blank" style="color: white; text-decoration: underline;">
+                            <strong>Trenton M.A.K.E.S</strong>
+                        </a><br>
                         <span style="background-color: white; color: black; padding: 0px 3px;">SUNDAYS @ NOON</span><br>
                         Downtown Trenton
                     </div>
@@ -355,10 +378,13 @@
                 </div>
             </div>
 
-            <!-- Keffiyeh decorative element for sidebar -->
-            <div style="text-align: center;">
-                <img src="https://picsum.photos/seed/keffiyeh/150/150" alt="Keffiyeh Pattern" style="border: 1px solid black; width: 100px; height: 100px; filter: grayscale(100%) contrast(120%);">
-                <p style="font-size: 0.7rem;">Symbol of Resistance</p>
+            <!-- HAMMER AND SICKLE IMAGE -->
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="https://z-cdn-media.chatglm.cn/files/5b734075-7938-40fe-8c3a-eff591cc0775.jpg?auth_key=1866703917-02709c1ce71e458ea8fef6badbc26da8-0-f20e4911126668c7ac52772353a93e2c" 
+                     alt="Symbol" 
+                     style="border: 3px solid black; display: block; margin: 0 auto; width: 100px; height: auto;">
+                
+                <p style="font-size: 0.7rem; font-weight: bold; margin-top: 5px;">Symbol of Resistance</p>
             </div>
         </aside>
 
@@ -402,8 +428,9 @@
                             <td>Active</td>
                             <td>Shore Region</td>
                         </tr>
+                        <!-- UPDATED LINK HERE -->
                         <tr>
-                            <td><a href="#">Trenton Chapter (M.A.K.E.S)</a></td>
+                            <td><a href="https://instagram.com/trent0nmakes" target="_blank">Trenton Chapter (M.A.K.E.S)</a></td>
                             <td>Active</td>
                             <td>Central Jersey</td>
                         </tr>
@@ -428,8 +455,13 @@
                     FOLLOW @NJ.BURN
                 </a>
                 <br><br>
-                <img src="https://picsum.photos/seed/crowd/400/200" alt="Rally Photo Placeholder" style="border: 5px solid black; display: block; margin: 20px auto; width: 100%; max-width: 400px;">
-                <p style="font-size: 0.8rem; font-style: italic;">[Image: Community gathering]</p>
+                
+                <!-- PROTEST PHOTO -->
+                <img src="https://z-cdn-media.chatglm.cn/files/7ad274a1-e2a4-46df-8423-89aba4e3cc8e.png?auth_key=1866703410-f31a028324cc4a278b36b373d51a71fb-0-cdd9542bab89cb5ec8c1141705942777" 
+                     alt="Protest Photo showing resistance and NJ BURN speech" 
+                     style="border: 5px solid black; display: block; margin: 20px auto; width: 100%; max-width: 500px;">
+                
+                <p style="font-size: 0.8rem; font-style: italic;">[Photo: Community speaking out against aggression]</p>
             </div>
 
         </main>
