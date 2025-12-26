@@ -33,7 +33,13 @@
 <div class="container">
     <h1>START A NEW CHAPTER</h1>
     <p>We are looking to expand NJ BURN to every corner of state. If you want to organize your town, fill out the form below.</p>
-    <form action="#" method="POST">
+    
+    <!-- Formsubmit.co is used to send the form data to your email without a backend server -->
+    <form action="https://formsubmit.co/nj.burn@proton.me" method="POST">
+        <!-- Hidden configuration for the email service -->
+        <input type="hidden" name="_subject" value="New Chapter Request from Website">
+        <input type="hidden" name="_captcha" value="false">
+
         <div class="form-group">
             <label for="name">NAME / ALIAS:</label>
             <input type="text" id="name" name="name" required>
@@ -54,8 +60,9 @@
             <button type="submit" class="submit-btn">SEND REQUEST</button>
         </div>
     </form>
+    
     <div style="margin-top: 30px; border-top: 1px dotted black; padding-top: 10px;">
-        <strong>SECURE CONTACT INFO:</strong><br>PGP Key Available upon request.<br>Or email: secure@njburn.org
+        <strong>SECURE CONTACT INFO:</strong><br>PGP Key Available upon request.<br>Or email: nj.burn@proton.me
     </div>
     <a href="index.html" class="back-link">&lt;&lt; BACK TO MAIN SITE</a>
 </div>
