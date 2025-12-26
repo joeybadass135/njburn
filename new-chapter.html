@@ -34,12 +34,8 @@
     <h1>START A NEW CHAPTER</h1>
     <p>We are looking to expand NJ BURN to every corner of state. If you want to organize your town, fill out the form below.</p>
     
-    <!-- Formsubmit.co is used to send the form data to your email without a backend server -->
-    <form action="https://formsubmit.co/nj.burn@proton.me" method="POST">
-        <!-- Hidden configuration for the email service -->
-        <input type="hidden" name="_subject" value="New Chapter Request from Website">
-        <input type="hidden" name="_captcha" value="false">
-
+    <!-- We removed the external action and added a JavaScript function -->
+    <form onsubmit="sendEmail(event)">
         <div class="form-group">
             <label for="name">NAME / ALIAS:</label>
             <input type="text" id="name" name="name" required>
@@ -66,5 +62,28 @@
     </div>
     <a href="index.html" class="back-link">&lt;&lt; BACK TO MAIN SITE</a>
 </div>
+
+<script>
+    function sendEmail(event) {
+        // 1. Stop the page from refreshing
+        event.preventDefault();
+
+        // 2. Get the values from the inputs
+        var name = document.getElementById('name').value;
+        var location = document.getElementById('location').value;
+        var contact = document.getElementById('contact').value;
+        var message = document.getElementById('message').value;
+
+        // 3. Format the email body
+        var body = "Name/Alias: " + name + 
+                   "%0D%0ALocation: " + location + 
+                   "%0D%0AContact: " + contact + 
+                   "%0D%0A%0D%0AMessage:%0D%0A" + message;
+
+        // 4. Open the user's email client
+        window.location.href = "mailto:nj.burn@proton.me?subject=New Chapter Request&body=" + body;
+    }
+</script>
+
 </body>
 </html>

@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NJ BURN - New Jersey Chapters</title>
+    <!-- Pixel font is imported but strictly scoped to the game layer below -->
     <style>
+        /* =========================================
+           WEBSITE STYLES (Classic Web 1.0 Look)
+           ========================================= */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
         :root {
             --flag-red: #E4312b; --flag-green: #009736; --flag-black: #000000; --flag-white: #ffffff;
             --link-blue: #0000EE; --link-visited: #551A8B; --bg-color: #f4f4f4;
         }
         * { box-sizing: border-box; }
+        
         body {
             margin: 0; padding: 0; font-family: "Times New Roman", Times, serif;
             background-color: var(--bg-color); color: var(--flag-black);
@@ -17,77 +24,103 @@
                               linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
             background-size: 20px 20px; background-position: 0 0, 10px 10px;
             background-blend-mode: overlay;
+            overflow-x: hidden; 
         }
+
         a { color: var(--link-blue); text-decoration: underline; cursor: pointer; }
         a:visited { color: var(--link-visited); }
         a:hover { color: var(--flag-red); background-color: #ffff00; text-decoration: none; }
+        
         .container {
             max-width: 960px; margin: 0 auto; border: 2px solid var(--flag-black);
             background-color: var(--flag-white); box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            position: relative; z-index: 1;
         }
+        
         header {
-            background-color: var(--flag-black); color: var(--flag-white); padding: 20px;
+            background-color: var(--flag-black); color: var(--flag-white); padding: 15px 20px;
             border-bottom: 4px solid var(--flag-green); text-align: center;
         }
+        
         .logo-wrapper {
             display: flex; align-items: center; justify-content: center;
             font-family: Arial, Helvetica, sans-serif; font-weight: bold; margin-bottom: 10px; position: relative;
         }
-        .logo-nj { font-size: 2rem; color: var(--flag-white); letter-spacing: 2px; margin-right: 5px; z-index: 2; }
-        .logo-burn { font-size: 4rem; color: var(--flag-white); line-height: 1; z-index: 2; }
+        
+        /* Adjusted Logo Sizes for a more compact "old web" look */
+        .logo-nj { font-size: 1.5rem; color: var(--flag-white); letter-spacing: 2px; margin-right: 5px; z-index: 2; }
+        .logo-burn { font-size: 3rem; color: var(--flag-white); line-height: 1; z-index: 2; }
+        
         .brush-icon {
-            position: absolute; width: 120px; height: 120px; top: -20px; left: 50%;
+            position: absolute; width: 100px; height: 100px; top: -20px; left: 50%;
             transform: translateX(-20%) rotate(-45deg); z-index: 1; opacity: 0.9;
             filter: drop-shadow(2px 2px 2px rgba(255,255,255,0.2));
         }
+        
         .motto {
             font-family: "Courier New", Courier, monospace; font-weight: bold; color: var(--flag-white);
-            margin-top: 15px; font-size: 1.2rem; text-transform: uppercase;
+            margin-top: 10px; font-size: 1rem; text-transform: uppercase;
             letter-spacing: 1px; text-shadow: 2px 2px 0px #333;
         }
+        
         .marquee-container {
             background-color: var(--flag-red); color: white; font-family: "Courier New", Courier, monospace;
             font-weight: bold; border-bottom: 2px solid var(--flag-black); overflow: hidden; white-space: nowrap;
         }
         marquee { padding: 5px 0; font-size: 1.1rem; }
+        
         .main-layout { display: flex; flex-wrap: wrap; }
+        
         aside {
-            width: 250px; background-color: #e0e0e0; border-right: 2px solid var(--flag-black); padding: 15px;
+            width: 220px; /* Slightly narrower to look more like classic web */
+            background-color: #e0e0e0; border-right: 2px solid var(--flag-black); padding: 15px;
             background-image: repeating-linear-gradient(45deg, #e0e0e0, #e0e0e0 10px, #dcdcdc 10px, #dcdcdc 20px);
+            flex-shrink: 0; /* Prevent sidebar from squishing */
         }
+        
         .sidebar-box { border: 2px outset #ffffff; background-color: #cccccc; padding: 10px; margin-bottom: 20px; text-align: center; }
+        
         .sidebar-title {
             background-color: var(--flag-green); color: white; font-weight: bold; padding: 3px;
-            margin: -10px -10px 10px -10px; font-family: Verdana, sans-serif; font-size: 0.9rem;
+            margin: -10px -10px 10px -10px; font-family: Verdana, sans-serif; font-size: 0.85rem;
         }
+        
         .nav-list { list-style-type: square; text-align: left; padding-left: 20px; margin: 0; }
-        .nav-list li { margin-bottom: 8px; }
+        .nav-list li { margin-bottom: 6px; font-size: 0.9rem; } /* Adjusted size */
+        
         main {
             flex: 1; padding: 20px;
             background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23000000" fill-opacity="0.03"><path d="M0 0h50v50H0zM50 50h50v50H50z"/></g></svg>');
         }
+        
         h1, h2, h3 { color: var(--flag-red); font-family: Georgia, serif; border-bottom: 1px dotted var(--flag-black); }
-        .welcome-text { font-size: 1.1rem; line-height: 1.6; text-align: justify; }
+        h1 { font-size: 1.8rem; margin-top: 0; } /* Adjusted size */
+        h2 { font-size: 1.4rem; }
+        
+        .welcome-text { font-size: 1rem; line-height: 1.6; text-align: justify; }
+        
         .chapters-table {
             width: 100%; border-collapse: collapse; border: 2px solid var(--flag-black); margin-top: 20px; background-color: white;
+            font-size: 0.9rem;
         }
-        .chapters-table th { background-color: var(--flag-black); color: white; padding: 10px; text-align: left; font-family: Verdana, sans-serif; }
-        .chapters-table td { padding: 8px; border: 1px solid #999; }
+        .chapters-table th { background-color: var(--flag-black); color: white; padding: 8px; text-align: left; font-family: Verdana, sans-serif; font-size: 0.85rem; }
+        .chapters-table td { padding: 6px; border: 1px solid #999; }
         .chapters-table tr:nth-child(even) { background-color: #f0f0f0; }
+        
         .insta-btn {
-            display: inline-block; background-color: var(--flag-green); color: white; padding: 10px 20px;
+            display: inline-block; background-color: var(--flag-green); color: white; padding: 8px 16px;
             border: 3px outset #88aa88; text-decoration: none; font-weight: bold;
-            font-family: Verdana, sans-serif; margin-top: 15px;
+            font-family: Verdana, sans-serif; margin-top: 15px; font-size: 0.9rem;
         }
         .insta-btn:hover { background-color: var(--flag-red); border-style: inset; color: white; }
+        
         footer {
             background-color: var(--flag-black); color: #888; text-align: center; padding: 20px;
-            font-size: 0.8rem; border-top: 4px solid var(--flag-red);
+            font-size: 0.75rem; border-top: 4px solid var(--flag-red);
         }
         .flag-bar { height: 10px; width: 100%; display: flex; }
         .flag-red { background: var(--flag-red); flex: 1; } .flag-white { background: white; flex: 1; } .flag-green { background: var(--flag-green); flex: 1; }
         
-        /* Specific styles for the new image box */
         .image-showcase {
             border: 4px double var(--flag-black);
             padding: 10px;
@@ -114,12 +147,100 @@
         @media (max-width: 768px) {
             .main-layout { flex-direction: column; }
             aside { width: 100%; border-right: none; border-bottom: 2px solid var(--flag-black); }
-            .logo-nj { font-size: 1.5rem; } .logo-burn { font-size: 3rem; } .motto { font-size: 1rem; }
+            .logo-nj { font-size: 1.2rem; } .logo-burn { font-size: 2rem; } .motto { font-size: 0.9rem; }
         }
+
+        /* =========================================
+           GAME LAYER STYLES (Strictly Scoped)
+           ========================================= */
+        #game-wrapper {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #000;
+            z-index: 9999; 
+            /* Only apply pixel font here */
+            font-family: 'Press Start 2P', cursive; 
+            user-select: none;
+            overflow: hidden; 
+        }
+
+        #game-wrapper #game-container {
+            position: relative; width: 100%; height: 100%;
+            background-color: #111;
+        }
+
+        #game-wrapper #start-screen {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            background: #800000; color: #fff; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; z-index: 9999; text-align: center;
+        }
+        
+        #game-wrapper button.start-btn {
+            padding: 20px; font-size: 20px; margin-top: 20px; cursor: pointer;
+            font-family: 'Press Start 2P', cursive; border: 4px solid #fff; background: #000; color: #fff;
+        }
+        #game-wrapper button.start-btn:hover { background: #fff; color: #000; }
+        #game-wrapper button.exit-btn {
+            margin-top: 10px; padding: 10px; font-size: 12px; cursor: pointer;
+            font-family: 'Press Start 2P', cursive; border: 2px solid #aaa; background: transparent; color: #aaa;
+        }
+        #game-wrapper button.exit-btn:hover { color: white; border-color: white; }
+
+        #game-wrapper .scanlines {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px; pointer-events: none; z-index: 100;
+        }
+
+        #game-wrapper #transition-flash {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; opacity: 0; pointer-events: none; z-index: 9998;
+            transition: opacity 0.2s;
+        }
+
+        #game-wrapper #hud {
+            position: absolute; top: 10px; left: 10px; color: white; z-index: 10;
+            text-shadow: 2px 2px #000; font-size: 12px; display: none;
+        }
+
+        #game-wrapper #battle-screen {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 50;
+        }
+
+        #game-wrapper #battle-canvas { display: block; margin: 0 auto; }
+
+        #game-wrapper #battle-ui {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 200px; border: 4px solid #fff; background: #222;
+            display: flex; flex-direction: row;
+        }
+
+        #game-wrapper #battle-text {
+            flex: 2; padding: 20px; color: #fff; line-height: 1.5; font-size: 14px;
+            border-right: 4px solid #fff;
+        }
+
+        #game-wrapper #battle-menu {
+            flex: 1; display: flex; flex-wrap: wrap; align-content: flex-start; padding: 10px;
+        }
+
+        #game-wrapper .btn {
+            flex: 50%; padding: 20px; text-align: center; cursor: pointer;
+            border: 2px solid #555; background: #000; color: #fff;
+            font-family: 'Press Start 2P', cursive; font-size: 10px;
+        }
+        #game-wrapper .btn:hover { background: #800000; border-color: #fff; }
+        #game-wrapper .btn.disabled { opacity: 0.5; pointer-events: none; }
     </style>
 </head>
 <body>
-<div class="container">
+
+<!-- =========================================
+     MAIN WEBSITE CONTENT
+     ========================================= -->
+<div id="main-website" class="container">
     <header>
         <div class="logo-wrapper">
             <span class="logo-nj">NJ</span>
@@ -145,6 +266,7 @@
                 <div class="sidebar-title">MAIN MENU</div>
                 <ul class="nav-list">
                     <li><a href="#">Home Page</a></li>
+                    <li><a href="#" onclick="showGame(); return false;" style="color: var(--flag-red); font-weight: bold;">Play: NJ BURN REVOLUTION</a></li>
                     <li><a href="cybersecurity.html">Cybersecurity</a></li>
                     <li><a href="#chapters">Our Chapters</a></li>
                     <li><a href="https://instagram.com/nj.burn" target="_blank">Instagram (@nj.burn)</a></li>
@@ -156,9 +278,9 @@
                 <div class="sidebar-title" style="background-color: var(--flag-black);">UPCOMING EVENTS</div>
                 <div style="text-align: left; font-size: 0.85rem; line-height: 1.4;">
                     <div style="margin-bottom: 10px;">
-                        <a href="https://instagram.com/trent0nmakes" target="_blank" style="color: white; text-decoration: underline;">
-                            <strong>Trenton M.A.K.E.S</strong>
-                        </a><br>
+                        <a href="trenton.html" style="color: white; text-decoration: underline;">
+    <strong>Trenton M.A.K.E.S</strong>
+</a><br>
                         <span style="background-color: white; color: black; padding: 0px 3px;">SUNDAYS @ NOON</span><br>
                         Downtown Trenton
                     </div>
@@ -220,21 +342,28 @@
                             <td>Active</td>
                             <td>Shore Region</td>
                         </tr>
-                        <tr>
-                            <td><a href="https://instagram.com/trent0nmakes" target="_blank">Trenton Chapter (M.A.K.E.S)</a></td>
-                            <td>Active</td>
-                            <td>Central Jersey</td>
-                        </tr>
+                       <tr>
+    <td><a href="trenton.html">Trenton Chapter (M.A.K.E.S)</a></td>
+    <td>Active</td>
+    <td>Central Jersey</td>
+</tr>
                         <tr>
                             <td><a href="#">Bergen County Chapter</a></td>
                             <td>Active</td>
                             <td>North Jersey</td>
                         </tr>
                         <tr>
-                            <td><a href="#">New Brunswick Chapter</a></td>
+                            <td><a href="new-brunswick.html">New Brunswick Chapter</a></td>
                             <td>Active</td>
                             <td>Central Jersey</td>
                         </tr>
+                        <!-- NEW GAZA CHAPTER ADDED HERE -->
+                        <tr>
+                            <td><a href="https://chuffed.org/project/158057-the-gaza-resilience-initiative-food-water-shelter?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnNcYcnuqlklO5tgCHrLYBYcL9OyHvMr6E1XoxSFhTvxFu_Y6VvqrlJT9ZJrg_aem_SUH-PxoQCxYzjGhHl2O2zQ" target="_blank">Gaza Chapter (Resilience Initiative)</a></td>
+                            <td>Active</td>
+                            <td>Gaza</td>
+                        </tr>
+                        <!-- END GAZA CHAPTER -->
                         <tr>
                             <td>Bridgeton Chapter</td>
                             <td style="color: #888;">Inactive</td>
@@ -280,5 +409,442 @@
         </p>
     </footer>
 </div>
+
+<!-- =========================================
+     GAME LAYER (Hidden by default)
+     ========================================= -->
+<div id="game-wrapper">
+    <div id="start-screen">
+        <h1 style="color:yellow; text-shadow: 4px 4px #000;">NJ BURN</h1>
+        <p>THE REVOLUTION IS NOW</p>
+        <button class="start-btn" id="start-btn" onclick="startGame()">START REVOLUTION</button>
+        <button class="exit-btn" onclick="hideGame()">BACK TO WEBSITE</button>
+    </div>
+
+    <div id="game-container">
+        <div class="scanlines"></div>
+        <div id="transition-flash"></div>
+
+        <div id="hud">
+            HP: <span id="hp-display">100/100</span><br>
+            LVL: <span id="lvl-display">1</span><br>
+            ZONES: <span id="score">0</span><br>
+            <span style="font-size:10px; color:#aaa; cursor:pointer; text-decoration:underline;" onclick="hideGame()">[EXIT]</span>
+        </div>
+        
+        <canvas id="world-canvas"></canvas>
+
+        <div id="battle-screen">
+            <canvas id="battle-canvas"></canvas>
+            <div id="battle-ui">
+                <div id="battle-text">Loading...</div>
+                <div id="battle-menu">
+                    <div class="btn" id="btn-fight" onclick="battleAction('FIGHT')">FIGHT</div>
+                    <div class="btn" id="btn-item" onclick="battleAction('ITEM')">ITEM</div>
+                    <div class="btn" id="btn-run" onclick="battleAction('RUN')">RUN</div>
+                    <div class="btn" id="btn-mercy" onclick="battleAction('MERCY')">MERCY</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// =========================================
+// NAVIGATION LOGIC
+// =========================================
+const websiteEl = document.getElementById('main-website');
+const gameEl = document.getElementById('game-wrapper');
+
+function showGame() {
+    websiteEl.style.display = 'none';
+    gameEl.style.display = 'block';
+}
+
+function hideGame() {
+    gameEl.style.display = 'none';
+    websiteEl.style.display = 'block';
+    gameActive = false; 
+    if(gameState === 'BATTLE') {
+        document.getElementById('battle-screen').style.display = 'none';
+        document.getElementById('start-screen').style.display = 'flex';
+        resetStartScreen();
+    }
+}
+
+function resetStartScreen() {
+    document.querySelector('#start-screen h1').innerText = "NJ BURN";
+    document.querySelector('#start-screen p').innerText = "THE REVOLUTION IS NOW";
+    document.getElementById('start-btn').innerText = "START REVOLUTION";
+    document.getElementById('start-btn').onclick = function() { startGame() };
+}
+
+// =========================================
+// GAME LOGIC
+// =========================================
+
+let canvas, ctx, bCanvas, bCtx;
+let gameActive = false;
+let gameState = 'WALK'; 
+let isTransitioning = false;
+let player = { x: 0, y: 0, hp: 100, maxHp: 100, lvl: 1, frame: 0 };
+let trees = [];
+let zonesCleared = 0;
+let battleEnemy = null;
+let isBusy = false;
+let encounterFrame = 0;
+let animationId;
+
+const P_RED = '#d32f2f';
+const P_SKIN = '#ffcc80';
+const FED_BLUE = '#1976d2';
+
+/* --- AUDIO ENGINE --- */
+let actx, osc, gainNode, musicInterval;
+const SONGS = [
+    { name: "Red Sun in the Sky", notes: [ 392, 392, 523, 392, 329, 293, 261, 392, 392, 523, 392, 329, 293, 261 ]}
+];
+let currentSongIdx = 0;
+let noteIdx = 0;
+
+function initAudio() {
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        actx = new AudioContext();
+        actx.resume();
+        osc = actx.createOscillator();
+        gainNode = actx.createGain();
+        osc.type = 'square';
+        osc.frequency.value = 261;
+        osc.connect(gainNode);
+        gainNode.connect(actx.destination);
+        osc.start();
+        gainNode.gain.value = 0;
+        
+        if (musicInterval) clearInterval(musicInterval);
+        musicInterval = setInterval(() => {
+            if (!actx || !osc || !gameActive) return;
+            const song = SONGS[currentSongIdx];
+            const freq = song.notes[noteIdx];
+            const now = actx.currentTime;
+            gainNode.gain.setValueAtTime(0.05, now); 
+            gainNode.gain.linearRampToValueAtTime(0, now + 0.15);
+            osc.frequency.value = freq;
+            noteIdx++;
+            if (noteIdx >= song.notes.length) noteIdx = 0;
+        }, 400);
+    } catch (e) {
+        console.log("Audio failed or blocked, game continues without sound.", e);
+    }
+}
+
+function init() {
+    canvas = document.getElementById('world-canvas');
+    ctx = canvas.getContext('2d');
+    bCanvas = document.getElementById('battle-canvas');
+    bCtx = bCanvas.getContext('2d');
+    
+    resize();
+    window.addEventListener('resize', resize);
+
+    trees = [];
+    for(let i=0; i<15; i++) {
+        trees.push({
+            x: Math.random() * canvas.width,
+            h: 50 + Math.random() * 150,
+            type: Math.random() > 0.5 ? 'pine' : 'oak'
+        });
+    }
+    
+    player.x = canvas.width / 3;
+    player.y = canvas.height - 100;
+    encounterFrame = 0;
+    
+    updateHud();
+}
+
+function resize() {
+    if (canvas && bCanvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        bCanvas.width = window.innerWidth;
+        bCanvas.height = window.innerHeight;
+    }
+}
+
+function startGame() {
+    const btn = document.getElementById('start-btn');
+    btn.innerText = "LOADING...";
+    btn.disabled = true;
+
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('hud').style.display = 'block';
+    
+    gameActive = true;
+    init();
+    if (animationId) cancelAnimationFrame(animationId);
+    requestAnimationFrame(gameLoop);
+    initAudio();
+}
+
+function updateHud() {
+    if(document.getElementById('hp-display')) {
+        document.getElementById('hp-display').innerText = `${player.hp}/${player.maxHp}`;
+        document.getElementById('lvl-display').innerText = player.lvl;
+        document.getElementById('score').innerText = zonesCleared;
+    }
+}
+
+let lastTime = 0;
+function gameLoop(time) {
+    if (!gameActive) return;
+    if (time - lastTime > 40) {
+        try {
+            if (gameState === 'WALK' && !isTransitioning) {
+                drawWorld();
+                updateWalking();
+            } else if (gameState === 'BATTLE' && !isTransitioning) {
+                drawBattle();
+            }
+        } catch (e) { console.error("Loop error", e); }
+        lastTime = time;
+    }
+    animationId = requestAnimationFrame(gameLoop);
+}
+
+function drawPixelArt(ctx, type, x, y, scale, shaking, skinColor) {
+    ctx.save();
+    if(shaking) { x += (Math.random() - 0.5) * 10; y += (Math.random() - 0.5) * 10; }
+    ctx.translate(x, y);
+    ctx.scale(scale, scale);
+
+    if (type === 'PLAYER') {
+        ctx.fillStyle = P_SKIN; ctx.fillRect(-2, -4, 4, 4);
+        ctx.fillStyle = P_RED; ctx.fillRect(-3, -5, 6, 2);
+        ctx.fillStyle = '#ffeb3b'; ctx.fillRect(-1, -5, 2, 2);
+        ctx.fillStyle = P_RED; ctx.fillRect(-3, 0, 6, 5);
+        ctx.fillStyle = '#333'; ctx.fillRect(-2, 5, 1, 3); ctx.fillRect(1, 5, 1, 3);
+    } 
+    else if (type === 'FED') {
+        ctx.fillStyle = skinColor || '#5d4037'; 
+        ctx.fillRect(-2, -4, 4, 4);
+        ctx.fillStyle = '#000'; ctx.fillRect(-2, -3, 4, 1);
+        ctx.fillStyle = FED_BLUE; ctx.fillRect(-3, 0, 6, 5);
+        ctx.fillStyle = 'red'; ctx.fillRect(-1, 0, 2, 4);
+    }
+    else if (type === 'KIRK') {
+        ctx.fillStyle = '#ffcc80'; ctx.fillRect(-3, -5, 6, 6);
+        ctx.fillStyle = '#fff'; ctx.fillRect(-4, -6, 8, 2); ctx.fillRect(-2, -8, 4, 2);
+        ctx.fillStyle = '#000'; ctx.fillRect(-1, -1, 2, 1);
+        ctx.fillStyle = 'orange'; ctx.fillRect(-3, 1, 6, 4);
+    }
+    else if (type === 'TRUMP') {
+        ctx.fillStyle = '#ffeb3b'; ctx.fillRect(-3, -6, 6, 2); ctx.fillRect(-4, -5, 2, 2); ctx.fillRect(2, -5, 2, 2);
+        ctx.fillStyle = '#ffcc80'; ctx.fillRect(-2, -4, 4, 4);
+        ctx.fillStyle = 'navy'; ctx.fillRect(-3, 0, 6, 5);
+        ctx.fillStyle = 'red'; ctx.fillRect(-1, 0, 2, 5);
+    }
+    ctx.restore();
+}
+
+function drawWorld() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#1a472a";
+    ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
+    ctx.fillStyle = "#0d3320";
+    trees.forEach(t => {
+        if (t.type === 'pine') {
+            ctx.beginPath();
+            ctx.moveTo(t.x, canvas.height - 100);
+            ctx.lineTo(t.x - 20, canvas.height - 100 - t.h);
+            ctx.lineTo(t.x + 20, canvas.height - 100 - t.h);
+            ctx.fill();
+        } else {
+            ctx.fillRect(t.x - 5, canvas.height - 100 - t.h, 10, t.h);
+            ctx.beginPath(); ctx.arc(t.x, canvas.height - 100 - t.h, 30, 0, Math.PI*2); ctx.fill();
+        }
+        t.x -= 2;
+        if (t.x < -50) {
+            t.x = canvas.width + 50;
+            t.h = 50 + Math.random() * 150;
+        }
+    });
+    player.frame += 0.1;
+    let bounce = Math.sin(player.frame) * 5;
+    drawPixelArt(ctx, 'PLAYER', player.x, player.y + bounce, 10, false);
+}
+
+function updateWalking() {
+    if (isTransitioning) return;
+    encounterFrame++;
+    if (encounterFrame > 100 && zonesCleared === 0) {
+        performBattleTransition('KIRK');
+    } else if (zonesCleared > 0 && Math.random() < 0.01) {
+        performBattleTransition('FED');
+    }
+}
+
+function performBattleTransition(forceType) {
+    isTransitioning = true;
+    const flash = document.getElementById('transition-flash');
+    flash.style.opacity = 1;
+    
+    setTimeout(() => {
+        initBattleData(forceType);
+        flash.style.opacity = 0;
+        document.getElementById('battle-screen').style.display = 'block';
+        setTimeout(() => { isTransitioning = false; }, 100);
+    }, 200);
+}
+
+function initBattleData(forceType) {
+    gameState = 'BATTLE';
+    isBusy = false;
+    
+    let type = 'FED';
+    let name = 'US AGENT';
+    let hp = 50;
+    let scale = 15;
+    let msg = "A wild US AGENT blocks the path!";
+    
+    let fedSkin = Math.random() > 0.5 ? '#ffcc80' : '#5d4037'; 
+
+    if (forceType === 'KIRK' || zonesCleared === 0) { 
+        type = 'KIRK'; name = 'CHARLIE KIRK'; hp = 150; scale = 20; 
+        msg = "CHARLIE KIRK: Communism has never worked!";
+        fedSkin = '#ffcc80'; 
+    } else if (zonesCleared >= 3) { 
+        type = 'TRUMP'; name = 'DONALD TRUMP'; hp = 300; scale = 25;
+        msg = "TRUMP: Make America Great Again!";
+        fedSkin = '#ffcc80'; 
+    }
+    
+    battleEnemy = { type, name, hp, maxHp: hp, scale, shake: 0, skinColor: fedSkin };
+    setBattleText(msg);
+}
+
+function drawBattle() {
+    bCtx.fillStyle = "#000";
+    bCtx.fillRect(0, 0, bCanvas.width, bCanvas.height);
+
+    bCtx.fillStyle = "#333";
+    bCtx.fillRect(0, bCanvas.height/2, bCanvas.width, bCanvas.height/2);
+
+    if (battleEnemy.type === 'FED') {
+        drawPixelArt(bCtx, battleEnemy.type, bCanvas.width/2, bCanvas.height/3, battleEnemy.scale, battleEnemy.shake > 0, battleEnemy.skinColor);
+    } else {
+        drawPixelArt(bCtx, battleEnemy.type, bCanvas.width/2, bCanvas.height/3, battleEnemy.scale, battleEnemy.shake > 0);
+    }
+
+    if(battleEnemy.shake > 0) battleEnemy.shake--;
+
+    drawPixelArt(bCtx, 'PLAYER', 100, bCanvas.height/2 + 100, 8, false);
+
+    drawHealthBar(bCtx, 100, bCanvas.height/2 + 50, player.hp, player.maxHp);
+    drawHealthBar(bCtx, bCanvas.width/2 - 50, 50, battleEnemy.hp, battleEnemy.maxHp);
+}
+
+function drawHealthBar(ctx, x, y, val, max) {
+    ctx.fillStyle = "#555";
+    ctx.fillRect(x, y, 100, 10);
+    ctx.fillStyle = "#d32f2f";
+    ctx.fillRect(x, y, (val/max)*100, 10);
+}
+
+function setBattleText(text) {
+    document.getElementById('battle-text').innerText = text;
+}
+
+function battleAction(action) {
+    if (isBusy) return;
+    isBusy = true;
+
+    let dmg = 0;
+    let txt = "";
+
+    if (action === 'FIGHT') {
+        dmg = 10 + Math.floor(Math.random() * 10);
+        battleEnemy.hp -= dmg;
+        battleEnemy.shake = 5;
+        txt = `You hit ${battleEnemy.name} for ${dmg} damage!`;
+        
+        if (battleEnemy.hp <= 0) {
+            winBattle();
+            return;
+        }
+    } else if (action === 'RUN') {
+        if (Math.random() > 0.5) {
+            gameState = 'WALK';
+            setBattleText("Escaped safely!");
+            setTimeout(() => { 
+                document.getElementById('battle-screen').style.display = 'none'; 
+                isBusy = false;
+            }, 1000);
+            return;
+        } else {
+            txt = "Cannot escape!";
+        }
+    } else if (action === 'ITEM') {
+        txt = "You have no items... yet.";
+        isBusy = false; return;
+    } else if (action === 'MERCY') {
+        txt = "The enemy accepts no mercy!";
+    }
+
+    setBattleText(txt);
+
+    setTimeout(() => {
+        let eDmg = 5 + Math.floor(Math.random() * 10);
+        player.hp -= eDmg;
+        updateHud();
+        setBattleText(`${battleEnemy.name} attacks! You take ${eDmg} damage.`);
+        
+        if (player.hp <= 0) {
+            handleDefeat();
+        } else {
+            isBusy = false;
+        }
+    }, 1000);
+}
+
+function winBattle() {
+    setBattleText(`${battleEnemy.name} has been defeated!`);
+    zonesCleared++;
+    updateHud();
+    
+    setTimeout(() => {
+        gameState = 'WALK';
+        document.getElementById('battle-screen').style.display = 'none';
+        if (zonesCleared === 1) {
+            setBattleText("The threat of Charlie Kirk is gone. Continue Long March.");
+            setTimeout(() => {
+                player.maxHp += 20;
+                player.hp = player.maxHp;
+                updateHud();
+                setBattleText("Max HP Increased!");
+                setTimeout(() => { isBusy = false; }, 1500);
+            }, 1000);
+        } else {
+            isBusy = false;
+        }
+    }, 2000);
+}
+
+function handleDefeat() {
+    gameActive = false;
+    document.getElementById('battle-screen').style.display = 'none';
+    document.getElementById('start-screen').style.display = 'flex';
+    document.querySelector('#start-screen h1').innerText = "DEFEAT";
+    document.querySelector('#start-screen p').innerText = "YOU HAVE FALLEN IN THE STRUGGLE.";
+    document.getElementById('start-btn').innerText = "TRY AGAIN";
+    document.getElementById('start-btn').disabled = false;
+    
+    document.getElementById('start-btn').onclick = function() {
+        resetStartScreen();
+        startGame();
+    };
+}
+
+</script>
 </body>
 </html>

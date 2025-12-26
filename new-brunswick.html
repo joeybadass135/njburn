@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NJ BURN - New Brunswick Chapter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+        :root {
+            --primary: #800000;
+            --secondary: #ffcc00;
+            --bg-dark: #111;
+            --text-main: #00ff00; /* Matrix terminal green */
+            --border-retro: #00ffff; /* Cyberpunk cyan */
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: hidden;
+        }
+
+        /* --- 8-BIT SKYLINE BACKGROUND --- */
+        .city-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                /* Moon */
+                radial-gradient(circle at 90% 20%, #fff 2%, transparent 5%),
+                /* Stars */
+                radial-gradient(white 1px, transparent 1px) 0 0 / 20px 20px,
+                /* Sky Gradient */
+                linear-gradient(to bottom, #000022, #440022);
+        }
+
+        /* Skyscrapers via CSS Gradients */
+        .buildings {
+            position: fixed;
+            bottom: 100px; /* Above train */
+            left: 0;
+            width: 100%;
+            height: 300px;
+            z-index: -1;
+            opacity: 0.5;
+            pointer-events: none;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        .tower {
+            background: repeating-linear-gradient(
+                0deg,
+                #000,
+                #000 10px,
+                #222 10px,
+                #222 12px
+            );
+            width: 60px;
+            height: 100%;
+            position: relative;
+            box-shadow: 5px 0 0 #111;
+        }
+
+        /* --- THE TRAIN ANIMATION --- */
+        .train-track {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 0; /* Behind text, in front of buildings */
+            overflow: hidden;
+            pointer-events: none;
+            border-top: 4px solid #333;
+        }
+
+        .train {
+            font-size: 60px;
+            position: absolute;
+            bottom: 10px;
+            animation: moveTrain 15s linear infinite;
+        }
+
+        @keyframes moveTrain {
+            0% { left: -200px; }
+            100% { left: 110%; }
+        }
+
+        /* --- MAIN LAYOUT (WEB 1.5) --- */
+        .container {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #000;
+            border: 4px double var(--border-retro);
+            box-shadow: 10px 10px 0px var(--primary);
+            z-index: 10;
+        }
+
+        header {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 4px solid var(--secondary);
+            text-shadow: 2px 2px #000;
+        }
+
+        .scanlines {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* CONTENT GRID */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            border-right: 2px dashed var(--border-retro);
+            padding-right: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: square;
+            color: var(--border-retro);
+        }
+
+        .sidebar li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid transparent;
+        }
+
+        .sidebar li a:hover {
+            background: var(--border-retro);
+            color: #000;
+        }
+
+        /* MAIN CONTENT */
+        .main-section {
+            color: #fff;
+        }
+
+        h2 {
+            border-bottom: 3px solid var(--primary);
+            color: var(--secondary);
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+        }
+
+        .alert-box {
+            background: #330000;
+            border: 2px solid red;
+            color: #ffcccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .photo-box {
+            border: 4px solid #fff;
+            margin: 20px auto;
+            display: block;
+            max-width: 100%;
+            box-shadow: 5px 5px 0 var(--border-retro);
+        }
+
+        .caption {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* PDF Embed */
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border: 2px solid var(--border-retro);
+            margin-top: 20px;
+            background: #eee;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: #666;
+            border-top: 1px solid #444;
+            font-size: 0.7rem;
+        }
+        
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<!-- BACKGROUND ELEMENTS -->
+<div class="city-bg">
+    <div class="buildings">
+        <div class="tower" style="height: 80%;"></div>
+        <div class="tower" style="height: 50%; width: 40px;"></div>
+        <div class="tower" style="height: 90%;"></div>
+        <div class="tower" style="height: 60%; width: 80px;"></div>
+        <div class="tower" style="height: 100%;"></div>
+        <div class="tower" style="height: 70%;"></div>
+    </div>
+</div>
+
+<!-- TRAIN ANIMATION -->
+<div class="train-track">
+    <div class="train">🚂🚃🚃🚃</div>
+</div>
+
+<!-- MAIN SITE -->
+<div class="container">
+    <header>
+        <h1>NJ BURN: NEW BRUNSWICK</h1>
+        <div style="font-family: 'VT323'; color: var(--secondary);">EST. 2024</div>
+        <marquee style="color: #000; background: #fff; font-weight: bold; margin-top: 10px;">
+            *** IN MEMORY OF DEBORAH TERELL *** NO JUSTICE NO PEACE *** TARGET: HELIX HUB ***
+        </marquee>
+    </header>
+
+    <div class="content-grid">
+        <!-- NAVIGATION -->
+        <aside class="sidebar">
+            <h3>CHAPTER DOCS</h3>
+            <ul>
+                <li><a href="#">Home Page</a></li>
+                <li><a href="#">Deborah Terell Tribute</a></li>
+                <li><a href="#">Anti-Zionist Actions</a></li>
+                <li><a href="#">FAQ / Statement</a></li>
+                <li><a href="#">Contact Local</a></li>
+            </ul>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <div style="border: 1px solid red; padding: 10px; color: red;">
+                    <strong>⚠ ACTIVE ZONE</strong><br>
+                    NBPD PROTESTS<br>
+                    IN PROGRESS
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="main-section">
+            
+            <!-- DEBORAH TERELL SECTION -->
+            <div id="tribute">
+                <h2>In Memory of Deborah Terell</h2>
+                <div class="alert-box">
+                    MURDERED BY NEW BRUNSWICK POLICE (2025).<br>
+                    WE WILL NOT FORGET. WE WILL NOT FORGIVE.
+                </div>
+                
+                <!-- REPLACE WITH YOUR IMAGE: src="deborah.jpg" -->
+                <img src="https://via.placeholder.com/600x400?text=Deborah+Terell+Photo" 
+                     alt="Deborah Terell" 
+                     class="photo-box">
+                
+                <p>
+                    Deborah Terell was brutally taken from us by the New Brunswick Police in 2025. We demand immediate accountability for NBPD. Her memory fuels our fight against police brutality and state-sanctioned violence.
+                </p>
+            </div>
+
+            <hr style="border: 1px dashed #444;">
+
+            <!-- HELIX HUB / ANTI-ZIONIST SECTION -->
+            <div id="actions">
+                <h2>Target: The Helix Hub</h2>
+                
+                <!-- REPLACE WITH YOUR IMAGE: src="helixxxx.jpg" -->
+                <img src="https://via.placeholder.com/600x400?text=Helix+Hub+Photo" 
+                     alt="Helix Hub Tel Aviv University" 
+                     class="photo-box">
+                
+                <p class="caption" style="color: yellow;">
+                    The Helix Hub: The center of Tel Aviv University presence in our city.
+                </p>
+
+                <p>
+                    <span class="blink" style="color: red; font-weight: bold;">>>> GOAL: DECOLONIZE NEW BRUNSWICK <<<</span><br><br>
+                    
+                    One of our primary objectives is the removal of <strong>Tel Aviv University</strong> operations from our community. 
+                    The Helix Hub serves as a physical symbol of Zionist occupation and corporate exploitation in New Brunswick.
+                </p>
+                <p>
+                    We are organizing direct actions, student boycotts, and community blockades to sever ties between local institutions and the occupying entity. 
+                    <em>There is no neutrality in the face of genocide.</em>
+                </p>
+            </div>
+
+            <hr style="border: 1px dashed #444;">
+
+            <!-- PDF SECTION -->
+            <div id="documents">
+                <h2>Chapter Documents & FAQ</h2>
+                <p>Read our official statements, frequently asked questions, and tactical guides below.</p>
+
+                <h3>1. Statement & FAQ</h3>
+                <!-- MAKE SURE faq.pdf IS IN YOUR FOLDER -->
+                <embed src="faq.pdf" width="100%" height="400" type="application/pdf" class="pdf-viewer">
+                
+                <p style="font-size: 0.8rem; color: #888;">
+                    (If the PDF does not load, you may need to right-click and save, or ensure your browser supports inline PDFs.)
+                </p>
+                
+                <!-- Placeholder for second PDF if you have one -->
+                <!-- <h3>2. Tactical Guide</h3>
+                <embed src="tactics.pdf" width="100%" height="400" type="application/pdf" class="pdf-viewer"> -->
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2024 NJ BURN - New Brunswick Chapter.<br>
+        <a href="#" style="color: #666; text-decoration: none;">[RETURN TO MAIN SITE]</a>
+    </footer>
+</div>
+
+</body>
+</html>
