@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlantic City Chapter - NJ BURN</title>
+    <style>
+        :root {
+            --bg-sky: #2b2b4b; --bg-sand: #e0cda9; --pixel-black: #000000;
+            --pixel-shadow: #1a1a1a; --text-color: #00ff41; --road-gray: #555555;
+        }
+        body {
+            margin: 0; padding: 0; background-color: var(--bg-sand);
+            font-family: "Courier New", Courier, monospace; color: var(--pixel-black); overflow-x: hidden;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+            background-size: 40px 40px;
+        }
+        a { color: #00008b; text-decoration: none; border-bottom: 2px dashed #00008b; }
+        a:hover { background-color: #00008b; color: white; border-bottom: none; }
+        .container {
+            max-width: 940px; margin: 0 auto; border: 8px solid var(--pixel-black);
+            background-color: rgba(255, 255, 255, 0.9); box-shadow: 15px 15px 0px rgba(0,0,0,0.5);
+            position: relative; z-index: 10;
+        }
+        header { background-color: black; padding: 0; border-bottom: 8px solid var(--pixel-black); text-align: center; }
+        .flag-img {
+            width: 100%; height: 160px; object-fit: contain; object-position: center; display: block; background-color: #000;
+        }
+        .header-text {
+            background-color: var(--pixel-black); color: var(--bg-sand); text-align: center; font-size: 2rem;
+            font-weight: bold; letter-spacing: 3px; text-transform: uppercase; padding: 10px; margin-top: -5px;
+        }
+        .casino-decoration {
+            height: 80px; background: linear-gradient(to bottom, #1a1a1a 0%, #1a1a1a 80%, #e0cda9 80%);
+            border-bottom: 4px solid black; position: relative; display: flex; justify-content: space-around;
+            align-items: flex-end; padding-bottom: 0; margin-bottom: 20px;
+        }
+        .window { width: 20px; height: 20px; background-color: #ffff00; border: 2px solid #000; }
+        .window.dark { background-color: #000; }
+        .main-layout { display: flex; flex-wrap: wrap; }
+        aside {
+            width: 200px; background-color: #4DA6FF; /* Retro Blue */
+            border-right: 4px dashed var(--pixel-black); padding: 15px; color: black;
+        }
+        .sidebar-title {
+            background-color: var(--pixel-black); color: var(--bg-sand); text-align: center;
+            font-weight: bold; padding: 5px; margin-bottom: 10px; border: 2px solid white;
+        }
+        .nav-list { list-style-type: none; padding: 0; }
+        .nav-list li a {
+            color: black !important; text-decoration: none; font-weight: bold; display: block;
+            padding: 5px 0; border-bottom: 1px dashed black; font-family: Arial, Helvetica, sans-serif;
+        }
+        .nav-list li a:hover { background-color: #000; color: white; }
+        main { flex: 1; padding: 25px; }
+        .content-box {
+            border: 4px solid var(--pixel-black); background-color: #fff; padding: 15px; margin-bottom: 20px;
+            box-shadow: 8px 8px 0px #ccc; position: relative;
+        }
+        .content-box::before, .content-box::after {
+            content: ''; position: absolute; width: 10px; height: 10px; background: black; transition: all 0.3s;
+        }
+        .content-box::before { top: -4px; left: -4px; border-top: 4px solid white; border-left: 4px solid white; }
+        .content-box::after { bottom: -4px; right: -4px; border-bottom: 4px solid white; border-right: 4px solid white; }
+        h2 {
+            font-family: 'Courier New', Courier, monospace; background-color: var(--bg-sky); color: white;
+            display: inline-block; padding: 5px; border: 2px solid black;
+        }
+        .road-container {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 120px;
+            background: linear-gradient(to bottom, #2b2b4b 0%, #000 100%); z-index: 1;
+            pointer-events: none; overflow: hidden; border-top: 4px solid #000;
+        }
+        .road {
+            width: 100%; height: 80px; background: #333; position: relative;
+            transform: perspective(300px) rotateX(20deg); border-top: 2px solid #fff; border-bottom: 2px solid #fff;
+        }
+        .road-lines {
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(to bottom, transparent 0%, transparent 20%, #fff 20%, #fff 40%, transparent 40%, transparent 100%);
+            background-size: 100% 50px; animation: drive 2s linear infinite;
+        }
+        @keyframes drive { from { background-position: 0 0; } to { background-position: 0 50px; } }
+        .star { position: fixed; background: white; width: 2px; height: 2px; z-index: -1; }
+        footer {
+            background-color: var(--pixel-black); color: var(--bg-sand); text-align: center;
+            padding: 10px; border-top: 4px solid white;
+        }
+    </style>
+</head>
+<body>
+<script>
+    for(let i=0; i<50; i++) {
+        let star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 50 + 'vh';
+        document.body.appendChild(star);
+    }
+</script>
+<div class="container">
+    <header>
+        <img src="https://z-cdn-media.chatglm.cn/files/3173242a-4361-42b4-a2a3-677ffdddbf1a.jpg?auth_key=1866706836-3d0597cb88fa4bae961087c708929aa5-0-93607fb3e9ea89b6858ad52272f4874b" 
+             alt="Sudan Flag" class="flag-img">
+    </header>
+    <div class="header-text">ATLANTIC CITY</div>
+    <div class="casino-decoration">
+        <div class="window dark"></div><div class="window"></div><div class="window"></div>
+        <div class="window dark"></div><div class="window dark"></div><div class="window"></div>
+    </div>
+    <div class="main-layout">
+        <aside>
+            <div class="sidebar-title">>> MENU</div>
+            <ul class="nav-list">
+                <li><a href="index.html">Back to Home</a></li>
+                <li><a href="#">Mission</a></li>
+                <li><a href="#">Events</a></li>
+            </ul>
+        </aside>
+        <main>
+            <div class="content-box">
+                <h2>COMBAT TRAFFICKING</h2>
+                <p>The boardwalk is not safe. We patrol to protect vulnerable people from exploitation hidden in casinos and nightlife.</p>
+            </div>
+            <div class="content-box">
+                <h2>MUTUAL AID</h2>
+                <p>South Jersey Gaza Coalition distributes food and resources. From Gaza to Shore.</p>
+            </div>
+            <div class="content-box" style="background-color: #e0f7fa;">
+                <h2>JOIN CHAPTER</h2>
+                <p>DM NJ BURN on Instagram to connect with AC organizers.</p>
+                <p style="text-align: center;">
+                    <a href="https://instagram.com/nj.burn" target="_blank" style="font-weight: bold; font-size: 1.2rem;">@nj.burn</a>
+                </p>
+            </div>
+        </main>
+    </div>
+    <footer><p>&copy; 2024 NJ BURN. 8-BIT MODE ACTIVE.</p></footer>
+</div>
+<div class="road-container"><div class="road"><div class="road-lines"></div></div></div>
+</body>
+</html>

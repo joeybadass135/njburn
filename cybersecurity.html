@@ -5,232 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NJ BURN - Cybersecurity Guide</title>
     <style>
-        /* 
-         * WEB 1.5 HACKER THEME 
-         * Dark, Terminal-style, Matrix vibes
-         */
-        :root {
-            --term-green: #00ff41;
-            --term-dim: #008f11;
-            --alert-red: #ff3333;
-            --bg-black: #050505;
-            --panel-grey: #1a1a1a;
-            --border-bevel: #333;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
+        :root { --term-green: #00ff41; --term-dim: #008f11; --alert-red: #ff3333; --bg-black: #050505; --panel-grey: #1a1a1a; --border-bevel: #333; }
+        * { box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-black);
-            color: var(--term-green);
-            font-family: "Courier New", Courier, monospace; /* Terminal font */
-            /* Subtle Grid Background */
-            background-image: 
-                linear-gradient(var(--border-bevel) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-bevel) 1px, transparent 1px);
+            margin: 0; padding: 0; background-color: var(--bg-black); color: var(--term-green);
+            font-family: "Courier New", Courier, monospace;
+            background-image: linear-gradient(var(--border-bevel) 1px, transparent 1px), linear-gradient(90deg, var(--border-bevel) 1px, transparent 1px);
             background-size: 20px 20px;
         }
-
-        a {
-            color: var(--term-green);
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        a:hover {
-            color: var(--alert-red);
-            background-color: var(--term-green);
-            color: black;
-            text-decoration: none;
-        }
-
+        a { color: var(--term-green); text-decoration: underline; cursor: pointer; }
+        a:hover { color: var(--alert-red); background-color: var(--term-green); color: black; text-decoration: none; }
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            border: 2px solid var(--term-green);
-            background-color: var(--panel-grey);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            max-width: 900px; margin: 0 auto; border: 2px solid var(--term-green);
+            background-color: var(--panel-grey); box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
         }
-
-        /* HEADER */
         header {
-            background-color: black;
-            color: var(--term-green);
-            padding: 20px;
-            border-bottom: 4px double var(--term-green);
-            text-align: center;
+            background-color: black; color: var(--term-green); padding: 20px;
+            border-bottom: 4px double var(--term-green); text-align: center;
         }
-
-        .glitch-text {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-shadow: 2px 2px var(--term-dim);
-        }
-
-        .sub-header {
-            font-size: 0.9rem;
-            color: var(--alert-red);
-            font-weight: bold;
-        }
-
-        /* MARQUEE */
-        .marquee-container {
-            background-color: var(--alert-red);
-            color: black;
-            font-weight: bold;
-            border-bottom: 2px solid var(--term-green);
-        }
-
-        marquee {
-            padding: 5px 0;
-            font-size: 1.1rem;
-        }
-
-        /* LAYOUT */
-        .main-layout {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* SIDEBAR */
+        .glitch-text { font-size: 2.5rem; font-weight: bold; text-transform: uppercase; text-shadow: 2px 2px var(--term-dim); }
+        .sub-header { font-size: 0.9rem; color: var(--alert-red); font-weight: bold; }
+        .marquee-container { background-color: var(--alert-red); color: black; font-weight: bold; border-bottom: 2px solid var(--term-green); }
+        marquee { padding: 5px 0; font-size: 1.1rem; }
+        .main-layout { display: flex; flex-wrap: wrap; }
         aside {
-            width: 220px;
-            background-color: black;
-            border-right: 2px solid var(--term-green);
-            padding: 15px;
+            width: 220px; background-color: black; border-right: 2px solid var(--term-green); padding: 15px;
         }
-
-        .sidebar-title {
-            color: var(--term-green);
-            border-bottom: 1px solid var(--term-dim);
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-        }
-
-        .nav-list {
-            list-style-type: none; /* Using text markers instead of bullets for hacker feel */
-            padding: 0;
-        }
-        
-        .nav-list li {
-            margin-bottom: 10px;
-            padding-left: 5px;
-            border-left: 2px solid var(--alert-red);
-        }
-        .nav-list li:hover {
-            border-left-color: var(--term-green);
-            background-color: #111;
-        }
-
-        /* MAIN CONTENT */
-        main {
-            flex: 1;
-            padding: 25px;
-            background-color: var(--panel-grey);
-        }
-
-        h1, h2, h3 {
-            color: var(--term-green);
-            border-bottom: 1px dashed var(--term-dim);
-            padding-bottom: 5px;
-        }
-
-        .alert-box {
-            border: 2px solid var(--alert-red);
-            background-color: #2a0000;
-            color: white;
-            padding: 15px;
-            margin: 20px 0;
-        }
-
-        .alert-title {
-            color: var(--alert-red);
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .os-card {
-            border: 1px solid var(--term-green);
-            background-color: #000;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 3px 3px 0px var(--term-dim);
-        }
-
-        .os-card h3 {
-            margin-top: 0;
-            color: white;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .secure-highlight {
-            color: var(--term-green);
-            font-weight: bold;
-        }
-
-        .insecure-highlight {
-            color: var(--alert-red);
-            text-decoration: line-through;
-            font-weight: bold;
-        }
-
-        /* FOOTER */
+        .sidebar-title { color: var(--term-green); border-bottom: 1px solid var(--term-dim); margin-bottom: 10px; padding-bottom: 5px; }
+        .nav-list { list-style-type: none; padding: 0; }
+        .nav-list li { margin-bottom: 10px; padding-left: 5px; border-left: 2px solid var(--alert-red); }
+        .nav-list li:hover { border-left-color: var(--term-green); background-color: #111; }
+        main { flex: 1; padding: 25px; background-color: var(--panel-grey); }
+        h1, h2, h3 { color: var(--term-green); border-bottom: 1px dashed var(--term-dim); padding-bottom: 5px; }
+        .alert-box { border: 2px solid var(--alert-red); background-color: #2a0000; color: white; padding: 15px; margin: 20px 0; }
+        .alert-title { color: var(--alert-red); font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase; }
+        .os-card { border: 1px solid var(--term-green); background-color: #000; padding: 15px; margin-bottom: 20px; box-shadow: 3px 3px 0px var(--term-dim); }
+        .os-card h3 { margin-top: 0; color: white; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .secure-highlight { color: var(--term-green); font-weight: bold; }
+        .insecure-highlight { color: var(--alert-red); text-decoration: line-through; font-weight: bold; }
         footer {
-            background-color: black;
-            color: var(--term-dim);
-            text-align: center;
-            padding: 20px;
-            border-top: 4px solid var(--term-green);
-            font-size: 0.8rem;
+            background-color: black; color: var(--term-dim); text-align: center; padding: 20px;
+            border-top: 4px solid var(--term-green); font-size: 0.8rem;
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .main-layout {
-                flex-direction: column;
-            }
-            aside {
-                width: 100%;
-                border-right: none;
-                border-bottom: 2px solid var(--term-green);
-            }
+            .main-layout { flex-direction: column; }
+            aside { width: 100%; border-right: none; border-bottom: 2px solid var(--term-green); }
         }
     </style>
 </head>
 <body>
-
 <div class="container">
-    
-    <!-- HEADER -->
     <header>
         <div class="glitch-text">CYBERSECURITY GUIDE</div>
         <div class="sub-header">/// SECURE YOUR DIGITAL SELF ///</div>
     </header>
-
-    <!-- MARQUEE -->
     <div class="marquee-container">
         <marquee behavior="scroll" direction="left">
             WARNING: WINDOWS IS SPYWARE /// IPHONE TRACKS YOUR EVERY MOVE /// SAMSUNG IS NOT SAFE /// SWITCH TO QUBES / TAILS / GRAPHENE NOW /// CELLULAR NETWORKS TRACK LOCATION REGARDLESS OF OS ///
         </marquee>
     </div>
-
-    <!-- LAYOUT -->
     <div class="main-layout">
-        
-        <!-- SIDEBAR -->
         <aside>
             <div class="sidebar-title">>> MENU</div>
             <ul class="nav-list">
@@ -240,37 +76,23 @@
                 <li><a href="#">>> Encryption</a></li>
                 <li><a href="#">>> Contact</a></li>
             </ul>
-
             <br>
             <div style="border: 1px solid var(--term-green); padding: 10px; font-size: 0.8rem;">
-                <strong>STATUS:</strong><br>
-                MONITORING: ACTIVE<br>
-                ENCRYPTION: NULL
+                <strong>STATUS:</strong><br>MONITORING: ACTIVE<br>ENCRYPTION: NULL
             </div>
         </aside>
-
-        <!-- CONTENT -->
         <main>
-            
             <h1>The Reality of Surveillance</h1>
-            <p>
-                In the modern digital landscape, privacy is an illusion if you use standard consumer products. 
-                Corporations and governments actively harvest your data.
-            </p>
-
-            <!-- INSECURE SECTION -->
+            <p>In the modern digital landscape, privacy is an illusion if you use standard consumer products. Corporations and governments actively harvest your data.</p>
             <div class="alert-box">
                 <div class="alert-title">!! INSECURE SYSTEMS !!</div>
-                <p>
-                    If you are using these operating systems, <strong>you are being watched.</strong>
-                </p>
+                <p>If you are using these operating systems, <strong>you are being watched.</strong></p>
                 <ul>
                     <li><span class="insecure-highlight">WINDOWS:</span> Proprietary, backdoored, sends telemetry to Microsoft by default.</li>
                     <li><span class="insecure-highlight">IPHONE (iOS):</span> <strong>WARNING:</strong> Apple can track your location, keystrokes, and habits. It is a walled garden designed for surveillance.</li>
                     <li><span class="insecure-highlight">SAMSUNG / ANDROID (Stock):</span> Filled with bloatware, trackers, and Google spyware.</li>
                 </ul>
             </div>
-
             <h2>The Hard Truth: Cellular Tracking</h2>
             <p style="color: #ccc;">
                 <strong>Important:</strong> Even with secure software, your location can be triangulated via cellular towers (IMSI catchers, Stingrays). 
@@ -278,15 +100,9 @@
                 <br><br>
                 Stop carrying your phone if you need total physical anonymity. But for digital security, you MUST switch.
             </p>
-
             <hr style="border-color: var(--term-green);">
-
             <h1>The Only Secure Operating Systems</h1>
-            <p>
-                There are only three operating systems that respect your freedom and security. Do not use anything else.
-            </p>
-
-            <!-- QUBES -->
+            <p>There are only three operating systems that respect your freedom and security. Do not use anything else.</p>
             <div class="os-card">
                 <h3>1. QUBES OS</h3>
                 <p><em>For maximum compartmentalization.</em></p>
@@ -297,8 +113,6 @@
                     <li><strong>Best for:</strong> High-risk individuals, journalists, activists.</li>
                 </ul>
             </div>
-
-            <!-- TAILS -->
             <div class="os-card">
                 <h3>2. TAILS OS (The Amnesic Incognito Live System)</h3>
                 <p><em>For anonymity and leaving no trace.</em></p>
@@ -309,8 +123,6 @@
                     <li><strong>Best for:</strong> Whistleblowing, accessing censored info, public computers.</li>
                 </ul>
             </div>
-
-            <!-- GRAPHENE -->
             <div class="os-card">
                 <h3>3. GRAPHENE OS</h3>
                 <p><em>The future of mobile privacy.</em></p>
@@ -322,26 +134,16 @@
                     <li><strong>Best for:</strong> Daily phone use without being tracked by Google/Apple.</li>
                 </ul>
             </div>
-
             <div style="text-align: center; margin-top: 30px;">
-                <a href="#" style="background-color: var(--term-green); color: black; padding: 10px 20px; text-decoration: none; font-weight: bold; border: 2px outset white;">
-                    [ DOWNLOAD ISOs ]
-                </a>
+                <a href="#" style="background-color: var(--term-green); color: black; padding: 10px 20px; text-decoration: none; font-weight: bold; border: 2px outset white;">[ DOWNLOAD ISOs ]</a>
             </div>
-
         </main>
     </div>
-
-    <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 NJ BURN CYBERSECURITY DIVISION.</p>
         <p>TRUST NO CODE. VERIFY EVERYTHING.</p>
-        <p>
-            <a href="index.html"><< RETURN TO MAIN SITE</a>
-        </p>
+        <p><a href="index.html"><< RETURN TO MAIN SITE</a></p>
     </footer>
-
 </div>
-
 </body>
 </html>
