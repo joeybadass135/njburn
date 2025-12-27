@@ -3,445 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRENTON // SYSTEM OVERRIDE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    
+    <title>TRENTON M.A.K.E.S | Chapter Report</title>
     <style>
-        :root {
-            --neon-yellow: #FCEE0A;
-            --neon-blue: #00F0FF;
-            --neon-red: #F70059;
-            --neon-black: #121212;
-            --neon-dark-blue: #002B36;
-            --grid-color: rgba(0, 240, 255, 0.1);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap');
 
-        * { box-sizing: border-box; }
+        :root {
+            --ccp-red: #DE2910;
+            --ccp-yellow: #FFDE00;
+            --bg-paper: #fdfbf7;
+            --text-dark: #333;
+            --border-dark: #8B0000;
+        }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            font-family: 'Rajdhani', sans-serif;
-            color: white;
-            overflow-x: hidden;
+            background-color: #e0e0e0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="4" height="4" viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="%23d1d1d1"/><rect x="2" y="2" width="2" height="2" fill="%23d1d1d1"/></svg>');
+            font-family: "Times New Roman", Times, serif;
+            color: var(--text-dark);
+            text-align: justify;
         }
 
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px var(--neon-red), -2px -2px var(--neon-blue); transform: translate(0,0); }
-            20% { text-shadow: -2px 2px var(--neon-red), 2px -2px var(--neon-blue); transform: translate(2px, -2px); }
-            40% { text-shadow: 2px -2px var(--neon-red), -2px 2px var(--neon-blue); transform: translate(-2px, 2px); }
-            60% { text-shadow: 0px 0px var(--neon-red), 0px 0px var(--neon-blue); transform: translate(0,0); }
-            100% { text-shadow: 2px 2px var(--neon-red), -2px -2px var(--neon-blue); transform: translate(0,0); }
+        /* LAYOUT CONTAINER (The "Web 1.0 Table") */
+        .main-table {
+            width: 900px;
+            margin: 10px auto;
+            background-color: var(--bg-paper);
+            border: 2px solid #999;
+            border-collapse: collapse;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
         }
 
-        .cyber-box {
-            background: rgba(18, 18, 18, 0.9);
-            border: 1px solid var(--neon-blue);
-            position: relative;
-            backdrop-filter: blur(5px);
-        }
-        .cyber-box::before {
-            content: ''; position: absolute; top: -1px; left: -1px; 
-            width: 20px; height: 20px; border-top: 2px solid var(--neon-yellow); border-left: 2px solid var(--neon-yellow);
-        }
-        .cyber-box::after {
-            content: ''; position: absolute; bottom: -1px; right: -1px; 
-            width: 20px; height: 20px; border-bottom: 2px solid var(--neon-yellow); border-right: 2px solid var(--neon-yellow);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* HEADER & TOWER */
-        header {
+        /* TOP RED BANNER */
+        .top-banner {
+            background-color: var(--ccp-red);
+            width: 100%;
+            height: 140px; 
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-bottom: 40px;
-            border-bottom: 2px solid var(--neon-red);
-            margin-bottom: 40px;
-        }
-
-        .title-block h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            margin: 0;
-            text-transform: uppercase;
-            line-height: 0.9;
-            color: white;
-            animation: glitch 3s infinite;
-        }
-        .title-block .sub {
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--neon-yellow);
-            font-size: 2rem;
-            letter-spacing: 5px;
-            font-weight: 700;
-        }
-
-        /* THE 8-BIT HOLOGRAPHIC SKYSCRAPER */
-        .holo-tower {
-            width: 150px;
-            height: 300px;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-            gap: 2px;
-            filter: drop-shadow(0 0 10px var(--neon-blue));
-            transform: skewX(-10deg);
-            opacity: 0.8;
-        }
-        .pixel {
-            background: rgba(0, 240, 255, 0.2);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-        }
-        .pixel.on {
-            background: var(--neon-yellow);
-            box-shadow: 0 0 10px var(--neon-yellow);
-            border-color: white;
-        }
-        .pixel.red {
-            background: var(--neon-red);
-        }
-
-        /* HERO & CANAL */
-        .hero-section {
+            align-items: center;
+            justify-content: center; 
+            border-bottom: 3px solid var(--ccp-yellow);
             position: relative;
-            height: 400px;
-            margin-bottom: 40px;
-            border: 1px solid var(--neon-blue);
-            background: #000;
             overflow: hidden;
+            gap: 30px; 
+        }
+
+        /* DECORATIVE STARS IN BANNER (Background pattern) */
+        .star-bg {
+            position: absolute;
+            color: rgba(255, 222, 0, 0.15);
+            font-size: 6rem;
+            z-index: 0;
+        }
+
+        /* BIG HAMMER & SICKLE PNG CONTAINER */
+        .big-symbol {
+            z-index: 2;
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            border: 5px solid var(--ccp-yellow);
+            padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 2px 4px 6px rgba(0,0,0,0.5);
+        }
+
+        .big-symbol img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            display: block;
+        }
+
+        .banner-text {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: var(--ccp-yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px #800000;
+            z-index: 2;
+            text-align: left; 
+            line-height: 1;
         }
         
-        /* CANAL EFFECT */
-        .canal {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 40%;
-            background: linear-gradient(0deg, #002B36, transparent);
-        }
-        .canal-water {
-            width: 200%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                90deg,
-                rgba(0, 240, 255, 0.1) 0px,
-                rgba(0, 240, 255, 0.4) 20px,
-                rgba(0, 240, 255, 0.1) 40px
-            );
-            animation: flow 5s linear infinite;
-        }
-        @keyframes flow { from { transform: translateX(0); } to { transform: translateX(-50px); } }
-
-        .hero-text {
-            z-index: 2;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            text-align: center;
-            text-shadow: 0 0 20px var(--neon-blue);
-            background: rgba(0,0,0,0.7);
-            padding: 20px;
-            border: 2px solid var(--neon-yellow);
+        .banner-sub {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: normal;
+            letter-spacing: 5px;
+            margin-top: 5px;
+            color: white;
+            text-shadow: none;
         }
 
-        /* HUD ELEMENTS */
-        .hud-top-left {
-            position: absolute; top: 20px; left: 20px;
-            font-family: 'Rajdhani', monospace;
-            color: var(--neon-red);
+        /* MARQUEE */
+        .marquee-bar {
+            background-color: #333;
+            color: var(--ccp-yellow);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 5px;
+            font-weight: bold;
+            border-bottom: 1px solid #999;
+            white-space: nowrap;
+            overflow: hidden;
             font-size: 0.9rem;
         }
-        .hud-bottom-right {
-            position: absolute; bottom: 20px; right: 20px;
-            text-align: right;
-            font-family: 'Rajdhani', monospace;
-            color: var(--neon-blue);
-        }
 
-        /* GRID LAYOUT */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        /* SUB-HEADER NAV */
+        .sub-header {
+            background-color: #eee;
+            padding: 5px 10px;
+            border-bottom: 1px solid #999;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+            color: #666;
         }
-        @media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
+        .sub-header a { color: var(--border-dark); text-decoration: none; font-weight: bold; }
+        .sub-header a:hover { text-decoration: underline; color: var(--ccp-red); }
 
-        /* DATA CARDS */
-        .data-card {
-            padding: 30px;
-            margin-bottom: 30px;
-            position: relative;
-            background: rgba(10, 10, 10, 0.9);
-            clip-path: polygon(
-                20px 0, 100% 0, 
-                100% calc(100% - 20px), calc(100% - 20px) 100%, 
-                0 100%, 0 20px
-            );
-            border: 1px solid #333;
-        }
-        .data-card:hover {
-            border-color: var(--neon-blue);
-            box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.1);
-        }
-
-        .card-header {
+        /* CONTENT BODY */
+        .content-row {
             display: flex;
-            align-items: center;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        .card-header h2 {
-            margin: 0;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            font-size: 1.8rem;
-            text-transform: uppercase;
-        }
-        .card-icon {
-            width: 10px; height: 10px; background: var(--neon-red); margin-right: 15px; 
-            box-shadow: 0 0 10px var(--neon-red); animation: blink 1s infinite;
         }
 
-        h3 {
-            color: var(--neon-yellow);
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.4rem;
-            margin-top: 25px;
-            text-transform: uppercase;
-            border-left: 3px solid var(--neon-yellow);
-            padding-left: 10px;
+        /* SIDEBAR */
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #999;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .sidebar-box {
+            border: 1px solid #ccc;
+            margin: 10px;
+            background: white;
+            padding: 10px;
+        }
+
+        .sidebar-title {
+            background-color: var(--ccp-red);
+            color: white;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: bold;
+            padding: 3px 5px;
+            margin: -10px -10px 10px -10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .nav-list {
+            list-style-type: square;
+            padding-left: 20px;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+        .nav-list li { margin-bottom: 5px; }
+        .nav-list a { color: #000; text-decoration: none; }
+        .nav-list a:hover { color: var(--ccp-red); text-decoration: underline; }
+
+        /* MAIN COLUMN */
+        .main-col {
+            flex: 1;
+            padding: 20px;
+            vertical-align: top;
+        }
+
+        /* TYPOGRAPHY & ELEMENTS */
+        h1, h2, h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: var(--border-dark);
+            border-bottom: 2px solid var(--border-dark);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        h1 { font-size: 2rem; text-align: center; margin-bottom: 20px; }
+        h2 { font-size: 1.4rem; margin-top: 25px; background: #fff0f0; padding-left: 10px;}
+        
+        .slogan {
+            text-align: center;
+            font-weight: bold;
+            color: var(--ccp-red);
+            font-size: 1.1rem;
+            margin: 10px 0 20px 0;
+            font-style: italic;
         }
 
         p {
-            font-size: 1.1rem;
             line-height: 1.6;
-            color: #aaa;
-        }
-        strong { color: white; }
-
-        /* ABANDONED HOUSES GALLERY */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .cyber-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.5) brightness(0.7);
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-        .cyber-img:hover {
-            filter: grayscale(0%) sepia(50%) hue-rotate(130deg) saturate(300%);
-            border-color: var(--neon-blue);
-            transform: scale(1.02);
+            margin-bottom: 15px;
+            font-size: 1rem;
         }
 
-        /* ALERT BAR */
-        .alert-bar {
-            grid-column: 1 / -1;
-            background: rgba(247, 0, 89, 0.2);
-            border: 1px solid var(--neon-red);
-            padding: 20px;
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            color: white;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        .alert-bar::before {
-            content: ''; position: absolute; top:0; left:0; width: 5px; height: 100%;
-            background: var(--neon-red);
-        }
-
-        /* NAV */
-        .nav-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
-            padding: 20px 0;
-        }
-        .nav-btn {
-            background: transparent;
-            color: var(--neon-blue);
-            border: 1px solid var(--neon-blue);
-            padding: 10px 30px;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .nav-btn:hover {
-            background: var(--neon-blue);
-            color: black;
-            box-shadow: 0 0 20px var(--neon-blue);
-        }
-
-        .insta-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: var(--neon-yellow);
-            border: 1px solid var(--neon-yellow);
+        .highlight-box {
+            border: 2px dashed var(--ccp-red);
+            background-color: #fff;
             padding: 15px;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-        .insta-link:hover {
-            background: var(--neon-yellow);
-            color: black;
-            box-shadow: 0 0 20px var(--neon-yellow);
+            margin: 20px 0;
+            text-align: center;
         }
 
-        @keyframes blink { 50% { opacity: 0; } }
+        .urgent-notice {
+            background-color: var(--ccp-red);
+            color: white;
+            padding: 15px;
+            border: 3px double var(--ccp-yellow);
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* IMAGE STYLING */
+        .prop-img-container {
+            float: left;
+            margin: 0 15px 10px 0;
+            border: 1px solid #666;
+            padding: 3px;
+            background: white;
+            width: 250px;
+            text-align: center;
+        }
+        .prop-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: sepia(0.5) contrast(1.1);
+        }
+        .caption {
+            font-size: 0.75rem;
+            color: #555;
+            margin-top: 5px;
+            font-family: sans-serif;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--ccp-red);
+            color: var(--ccp-yellow);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            border-top: 3px solid var(--ccp-yellow);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 900px) {
+            .main-table { width: 100%; border: none; }
+            .content-row { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #999; }
+            .banner-text { font-size: 2rem; text-align: center; }
+            .top-banner { height: auto; padding: 20px; flex-direction: column; }
+            .big-symbol { width: 80px; height: 80px; margin-bottom: 10px; }
+            .prop-img-container { width: 100%; float: none; margin: 0 auto 15px auto; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div class="main-table">
+    
+    <!-- HEADER -->
+    <div class="top-banner">
+        <!-- Background Stars -->
+        <div class="star-bg" style="top: -20px; left: 10px;">&#9733;</div>
+        <div class="star-bg" style="top: 20px; left: 50px; font-size: 3rem;">&#9733;</div>
+        <div class="star-bg" style="bottom: -20px; right: 10px;">&#9733;</div>
         
-        <header>
-            <div class="title-block">
-                <h1>TRENTON</h1>
-                <div class="sub">CHAPTER: M.A.K.E.S // SYSTEM OVERRIDE</div>
-            </div>
-            
-            <!-- 8-BIT SKYSCRAPER (CSS ART) -->
-            <div class="holo-tower">
-                <!-- Row 1 -->
-                <div class="pixel"></div><div class="pixel on"></div><div class="pixel on"></div><div class="pixel"></div><div class="pixel"></div>
-                <!-- Row 2 -->
-                <div class="pixel on"></div><div class="pixel"></div><div class="pixel red"></div><div class="pixel"></div><div class="pixel on"></div>
-                <!-- Row 3 -->
-                <div class="pixel"></div><div class="pixel on"></div><div class="pixel"></div><div class="pixel on"></div><div class="pixel"></div>
-                <!-- Row 4 -->
-                <div class="pixel on"></div><div class="pixel"></div><div class="pixel on"></div><div class="pixel"></div><div class="pixel on"></div>
-                <!-- Row 5 -->
-                <div class="pixel"></div><div class="pixel"></div><div class="pixel on"></div><div class="pixel on"></div><div class="pixel"></div>
-                <!-- Row 6 -->
-                <div class="pixel on"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel on"></div>
-                <!-- Row 7 -->
-                <div class="pixel"></div><div class="pixel on"></div><div class="pixel red"></div><div class="pixel on"></div><div class="pixel"></div>
-                <!-- Row 8 -->
-                <div class="pixel on"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel on"></div>
-                <!-- Row 9 -->
-                <div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div>
-                <!-- Row 10 -->
-                <div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div>
-            </div>
-        </header>
-
-        <div class="nav-row">
-            <a href="index.html" class="nav-btn">&lt; MAIN_HUB</a>
-            <a href="#logs" class="nav-btn">SYS_LOGS</a>
-            <a href="#sector" class="nav-btn">SECTOR_ANALYSIS</a>
+        <!-- REQUESTED PNG IMAGE -->
+        <div class="big-symbol">
+            <img src="https://z-cdn-media.chatglm.cn/files/a6e72a22-8b21-425c-98b7-144e60aa32aa.jpg?auth_key=1866799828-6103c54e22c44c11a29acf2f06d0105e-0-884b32c6c7c7885cd1da72931975ca6c" alt="Hammer and Sickle">
         </div>
 
-        <!-- HERO WITH CANAL -->
-        <div class="hero-section">
-            <div class="hud-top-left">LOC: 40.2206° N, 74.7597° W</div>
-            <div class="hud-bottom-right">STATUS: CRITICAL // THREAT_LEVEL: HIGH</div>
-            
-            <div class="hero-text">
-                TRENTON MAKES<br><span style="font-size: 1.5rem; color: var(--neon-red);">THE WORLD TAKES</span>
-            </div>
-            
-            <div class="canal">
-                <div class="canal-water"></div>
-            </div>
+        <div class="banner-text">
+            TRENTON M.A.K.E.S
+            <span class="banner-sub">CHAPTER REPORT</span>
         </div>
+    </div>
 
-        <!-- UPDATED ALERT BAR -->
-        <div class="alert-bar">
-            <h2 style="margin:0; font-size: 1.5rem;">4 MEMBERS DETAINED</h2>
-            <p style="margin:5px 0 0 0;">INCIDENT: PROTEST VS YOAV GALLANT // LOCATION: LIVINGSTON, NJ</p>
-        </div>
+    <!-- MARQUEE -->
+    <div class="marquee-bar">
+        <marquee scrollamount="5" scrolldelay="100">
+            *** LONG LIVE THE VICTORY OF THE PEOPLE'S WAR *** SOLIDARITY WITH THE OPPRESSED MASSES *** TRENTON M.A.K.E.S: SYSTEM OVERRIDE *** RESIST IMPERIALIST AGGRESSION ***
+        </marquee>
+    </div>
 
-        <div class="main-grid" id="logs">
-            
-            <!-- CARD 1: THE STRUGGLE -->
-            <div class="data-card">
-                <div class="card-header">
-                    <div class="card-icon"></div>
-                    <h2>Urban Decay</h2>
-                </div>
-                
-                <p>
-                    <strong>ANALYSIS:</strong> Trenton is a ghost shell. Blocks of abandoned industrial warehouses and residential structures stand fenced and empty while city streets overflow with displaced citizens.
+    <!-- SUB-NAV -->
+    <div class="sub-header">
+        [ <a href="index.html">Central Committee Home</a> ] | 
+        [ <a href="#">Local News</a> ] | 
+        [ <a href="#">Theoretical Study</a> ] | 
+        [ <a href="#">Mass Organization</a> ] |
+        <span style="color: red; font-weight: bold;">Guestbook</span>
+    </div>
+
+    <!-- MAIN CONTENT ROW -->
+    <div class="content-row">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <div class="sidebar-title">CHAPTER STATUS</div>
+                <p style="font-size: 0.8rem; text-align: center; margin: 5px 0;">
+                    <strong>Location:</strong> Trenton, NJ<br>
+                    <strong>Condition:</strong> ACTIVE STRUGGLE<br>
+                    <strong>Members:</strong> GROWING
                 </p>
-                
-                <h3>The Shelter Protocol</h3>
-                <p>
-                    The system offers only one refuge: The <strong>Trenton Rescue Mission</strong>. Overcrowded and volatile, it is a zone of conflict. The state denies access to empty buildings, forcing population into elements.
-                </p>
-
-                <h3>Visual Data</h3>
-                <div class="gallery">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=400&auto=format&fit=crop" class="cyber-img" alt="Abandoned">
-                    <img src="https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?q=80&w=400&auto=format&fit=crop" class="cyber-img" alt="Graffiti">
-                </div>
             </div>
 
-            <!-- CARD 2: THE PROTEST -->
-            <div class="data-card" id="sector">
-                <div class="card-header">
-                    <div class="card-icon" style="background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue);"></div>
-                    <h2 style="color: white;">System Corruption</h2>
-                </div>
+            <div class="sidebar-box">
+                <div class="sidebar-title">QUICK LINKS</div>
+                <ul class="nav-list">
+                    <li><a href="#struggle">The Housing Struggle</a></li>
+                    <li><a href="#africa">Sahel Alliance</a></li>
+                    <li><a href="#imperialism">Anti-Imperialism</a></li>
+                    <li><a href="#detained">Defend Our Comrades</a></li>
+                    <li><a href="#">New Brunswick Cell</a></li>
+                    <li><a href="https://instagram.com/trent0nmakes" target="_blank">Official Channel (@trent0nmakes)</a></li>
+                </ul>
+            </div>
 
-                <h3>NJ-Israel Commission</h3>
-                <p>
-                    While infrastructure collapses, the state boosts trade with apartheid through <strong>NJ-Israel Commission</strong>. Profit prioritized over people. Connection denied.
+            <div class="sidebar-box" style="text-align: center; background-color: #fff0f0;">
+                <div class="sidebar-title" style="background-color: var(--border-dark);">QUOTE OF THE DAY</div>
+                <p style="font-size: 0.8rem; font-style: italic; color: #800000;">
+                    "A revolution is not a dinner party, or writing an essay, or painting a picture..."
                 </p>
+                <p style="font-size: 0.7rem; margin:0;">- Chairman Mao</p>
+            </div>
+        </aside>
 
-                <h3>Event: Livingston Protest</h3>
-                <p>
-                    We mobilized to confront Yoav Gallant. The response was state violence.
+        <!-- RIGHT CONTENT -->
+        <main class="main-col">
+            
+            <h1>CHAPTER REPORT: TRENTON M.A.K.E.S</h1>
+            <div class="slogan">"Serve the People; Fight the Power"</div>
+
+            <!-- URGENT ALERT -->
+            <div class="urgent-notice">
+                <span style="font-size: 1.2rem;">&#9888;</span> URGENT: 4 COMRADES DETAINED BY STATE SECURITY
+            </div>
+
+            <!-- SECTION 1 -->
+            <h2 id="struggle">1. The Housing Question & Urban Decay</h2>
+            
+            <div class="prop-img-container">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=400&auto=format&fit=crop" alt="Abandoned Structure">
+                <div class="caption">Fig 1. Productive forces lay idle while the people suffer.</div>
+            </div>
+
+            <p>
+                The objective conditions in Trenton reveal the deep contradictions of late-stage capitalism. Vast blocks of abandoned industrial warehouses and residential structures stand fenced and empty—monuments to private property rights—while the streets overflow with displaced proletarians.
+            </p>
+            <p>
+                The <strong>Trenton Rescue Mission</strong>, currently the only state-sanctioned refuge, is overcrowded and reflects the failure of the bourgeois social safety net. We reject the charity model. We demand the immediate seizure of empty housing for the homeless. The people have a right to shelter, derived from their labor, not the benevolence of the ruling class.
+            </p>
+            <p>
+                <strong>Analysis:</strong> The city of Trenton is a "ghost shell" not because of a lack of resources, but because of mismanagement and exploitation. Our chapter organizes regular inspections of these zones to document the neglect and prepare for mass action.
+            </p>
+
+            <!-- SECTION 2: SAHEL ALLIANCE (NEW) -->
+            <h2 id="africa">2. Pan-Africanism & The Sahel Alliance</h2>
+            
+            <div class="prop-img-container">
+                <img src="https://z-cdn-media.chatglm.cn/files/bb316243-7689-4c37-8f69-7e7de9d69d33.jpg?auth_key=1866800258-52be6d35887a4b1b80905ee78cc8bf1d-0-7856cd4195114dec3dd8f78ba6c21fe3" alt="Alliance of Sahel States">
+                <div class="caption">Fig 2. The Alliance of Sahel States (AES) breaks the chains of ECOWAS.</div>
+            </div>
+
+            <p>
+                The Trenton M.A.K.E.S chapter stands in full solidarity with the <strong>Alliance of Sahel States (AES)</strong>. The recent formation of this confederation—Mali, Burkina Faso, and Niger—marks a decisive break from neocolonial structures like ECOWAS and the Françafrique monetary system.
+            </p>
+            <p>
+                Imperialist media labels these nations as "unstable," yet we see the rapid reclamation of sovereignty. Under the leadership of Captain Ibrahim Traoré, Burkina Faso has demonstrated that true independence leads to rapid development.
+            </p>
+
+            <!-- STAT BOX -->
+            <div class="highlight-box" style="border-color: var(--ccp-yellow); background-color: #fffff0;">
+                <h3 style="color: var(--border-dark); margin: 0 0 10px 0;">INFRASTRUCTURE REPORT: BURKINA FASO</h3>
+                <p style="font-size: 1.1rem; color: var(--text-dark);">
+                    <strong>COLONIAL ERA:</strong> 3,000 km of roads built in 80 years.<br>
+                    <span style="color: var(--ccp-red); font-weight: bold;">AES ERA (TRAORÉ):</span> <span style="font-size: 1.3rem;">5,000 km of NEW ROADS per YEAR.</span>
                 </p>
-                
-                <!-- UPDATED STATUS BOX -->
-                <div style="background: #222; border: 1px solid var(--neon-red); padding: 15px; margin-top: 20px;">
-                    <p style="margin:0; color: var(--neon-red); font-weight: bold; font-family: 'Orbitron';">
-                        > 4 MEMBERS ARRESTED<br>
-                        > STATUS: IN TRIAL<br>
-                        > NEXT ACTION: LEGAL DEFENSE
-                    </p>
-                </div>
+                <p style="font-size: 0.9rem; margin: 5px 0 0 0;">Socialism builds. Imperialism extracts.</p>
+            </div>
 
-                <h3>Connect</h3>
-                <p>Access secure channel for updates.</p>
-                <a href="https://instagram.com/trent0nmakes" target="_blank" class="insta-link">
-                    INITIATE_LINK: @TRENT0NMakes
+            <p>
+                This massive infrastructure investment is not for the extraction of wealth for Paris, but for the connection of the Burkinabé people. We salute this military alliance as a necessary shield against Western aggression and a model for the Global South.
+            </p>
+
+            <!-- SECTION 3 -->
+            <h2 id="imperialism">3. Combatting Local Imperialist Collaboration</h2>
+            <p>
+                While our communities crumble, the state of New Jersey actively collaborates with the Zionist apartheid regime through the <strong>NJ-Israel Commission</strong>. This is a clear example of local imperialism. Trade is prioritized over human rights, and our tax dollars are used to fund oppression abroad.
+            </p>
+            <p>
+                True internationalism requires us to stand against all forms of imperialist aggression. The struggle in Trenton is directly linked to the struggle in Palestine. We oppose the revisionist policies that normalize these relations.
+            </p>
+
+            <div class="highlight-box">
+                <h3 style="color: var(--ccp-red); margin: 0 0 10px 0;">EVENT LOG: LIVINGSTON CONFRONTATION</h3>
+                <p style="margin: 0;">
+                    <strong>Date:</strong> Recent<br>
+                    <strong>Target:</strong> Yoav Gallant (Architect of Genocide)<br>
+                    <strong>Action:</strong> Mobile Detachment deployed to intercept and protest.<br>
+                    <strong>Result:</strong> State violence deployed against peaceful demonstrators.
+                </p>
+            </div>
+
+            <!-- SECTION 4 -->
+            <h2 id="detained">4. Defense of the Detained</h2>
+            <p>
+                Following the confrontation in Livingston, four members of our cell were illegally detained by the repressive state apparatus. They are currently being held as political prisoners. We are launching a full-scale legal and political defense campaign.
+            </p>
+            <p>
+                We call on all progressive organizations and individuals to flood the phones of the prosecutor's office and demand their immediate release. An injury to one is an injury to all.
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;">
+                <p style="font-family: 'Roboto Condensed', sans-serif; font-weight: bold; font-size: 1.2rem;">JOIN THE MASS LINE</p>
+                <a href="https://instagram.com/trent0nmakes" target="_blank" 
+                   style="background: var(--ccp-red); color: white; padding: 10px 20px; text-decoration: none; font-weight: bold; border: 2px solid #800000;">
+                   CONNECT WITH THE CHAPTER
                 </a>
             </div>
 
-        </div>
-
+        </main>
     </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            &copy; 2024 Trenton M.A.K.E.S | NJ BURN<br>
+            <span style="font-size: 0.7rem; opacity: 0.8;">Central Committee | New Jersey Province</span>
+        </p>
+        <div style="font-size: 0.7rem; margin-top: 10px;">
+            <a href="#" style="color: #fff;">Privacy Policy</a> | 
+            <a href="#" style="color: #fff;">Site Map</a> | 
+            <a href="#" style="color: #fff;">Contact Webmaster</a>
+        </div>
+    </footer>
+
+</div>
 
 </body>
 </html>
