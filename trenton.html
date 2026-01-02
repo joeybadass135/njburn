@@ -39,14 +39,13 @@
         .top-banner {
             background-color: var(--ccp-red);
             width: 100%;
-            height: 140px; 
+            height: 120px; 
             display: flex;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
             border-bottom: 3px solid var(--ccp-yellow);
             position: relative;
             overflow: hidden;
-            gap: 30px; 
         }
 
         /* DECORATIVE STARS IN BANNER (Background pattern) */
@@ -55,28 +54,6 @@
             color: rgba(255, 222, 0, 0.15);
             font-size: 6rem;
             z-index: 0;
-        }
-
-        /* BIG HAMMER & SICKLE PNG CONTAINER */
-        .big-symbol {
-            z-index: 2;
-            width: 120px;
-            height: 120px;
-            background-color: white;
-            border-radius: 50%;
-            border: 5px solid var(--ccp-yellow);
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 2px 4px 6px rgba(0,0,0,0.5);
-        }
-
-        .big-symbol img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
-            display: block;
         }
 
         .banner-text {
@@ -88,7 +65,7 @@
             letter-spacing: 2px;
             text-shadow: 3px 3px 0px #800000;
             z-index: 2;
-            text-align: left; 
+            text-align: center;
             line-height: 1;
         }
         
@@ -189,6 +166,13 @@
         h1 { font-size: 2rem; text-align: center; margin-bottom: 20px; }
         h2 { font-size: 1.4rem; margin-top: 25px; background: #fff0f0; padding-left: 10px;}
         
+        .Established {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
         .slogan {
             text-align: center;
             font-weight: bold;
@@ -268,7 +252,6 @@
             .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #999; }
             .banner-text { font-size: 2rem; text-align: center; }
             .top-banner { height: auto; padding: 20px; flex-direction: column; }
-            .big-symbol { width: 80px; height: 80px; margin-bottom: 10px; }
             .prop-img-container { width: 100%; float: none; margin: 0 auto 15px auto; }
         }
     </style>
@@ -284,11 +267,6 @@
         <div class="star-bg" style="top: 20px; left: 50px; font-size: 3rem;">&#9733;</div>
         <div class="star-bg" style="bottom: -20px; right: 10px;">&#9733;</div>
         
-        <!-- REQUESTED PNG IMAGE -->
-        <div class="big-symbol">
-            <img src="https://z-cdn-media.chatglm.cn/files/a6e72a22-8b21-425c-98b7-144e60aa32aa.jpg?auth_key=1866799828-6103c54e22c44c11a29acf2f06d0105e-0-884b32c6c7c7885cd1da72931975ca6c" alt="Hammer and Sickle">
-        </div>
-
         <div class="banner-text">
             TRENTON M.A.K.E.S
             <span class="banner-sub">CHAPTER REPORT</span>
@@ -302,13 +280,12 @@
         </marquee>
     </div>
 
-    <!-- SUB-NAV -->
+    <!-- SUB-NAV (UPDATED LINKS) -->
     <div class="sub-header">
         [ <a href="index.html">Home</a> ] | 
-        [ <a href="#">Local News</a> ] | 
-        [ <a href="#">Theoretical Study</a> ] | 
-        [ <a href="#">Mass Organization</a> ] |
-      
+        [ <a href="https://www.marxists.org/ebooks/mao/Quotations_from_Chairman_Mao_Tse-tung.pdf" target="_blank">Theoretical Study</a> ] | 
+        [ <a href="https://www.marxists.org/history/erol/ncm-3/call-mass-line.htm" target="_blank">Mass Work</a> ] |
+    </div>
 
     <!-- MAIN CONTENT ROW -->
     <div class="content-row">
@@ -335,8 +312,7 @@
                     <li><a href="https://instagram.com/trent0nmakes" target="_blank">Official Channel (@trent0nmakes)</a></li>
                 </ul>
             </div>
-
-            <div class="sidebar-box" style="text-align: center; background-color: #fff0f0;">
+        </aside>
 
         <!-- RIGHT CONTENT -->
         <main class="main-col">
@@ -353,15 +329,16 @@
             <h2 id="struggle">1. The Housing Question & Urban Decay</h2>
             
             <div class="prop-img-container">
-                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=400&auto=format&fit=crop" alt="Abandoned Structure">
+                <img src="https://z-cdn-media.chatglm.cn/files/81080e2c-d035-4a1c-97fb-1aa455aa17f2.jpg?auth_key=1867303698-0d926e564dd84137a7829630667d367c-0-26ba8df214e6847ff6dc1decf7b830c5" 
+                     alt="Damaged Trenton Housing">
                 <div class="caption">Fig 1. Productive forces lay idle while the people suffer.</div>
             </div>
 
             <p>
-                The abandoned buildings in Trenton show clearly the shit city government. They have hundreds of abandonded buildings and yet they house no one... Why? They want homeless people on the streets. The buildings are empty but we are not allowed in them... why?
+                The abandoned buildings in Trenton show clearly, shit city government. They have hundreds of abandonded buildings and yet they house no one... Why? They want homeless people on the streets. The buildings are empty but we are not allowed in them... why?
             </p>
             <p>
-                The <strong>Trenton Rescue Mission</strong>, currently the only shelter, is overcrowded and dangerous and reflects the failure of the city to help the people.  We reject the charity model. We want the distribution of empty housing for the homeless. 
+                The <strong>Trenton Rescue Mission</strong>, currently, is the only shelter, is overcrowded and dangerous and reflects the failure of the city to help the people. We reject the charity model. We want to distribution of empty housing for the homeless. 
             </p>
             <p>
                 <strong>Analysis:</strong> The city of Trenton is a "ghost shell" not because of a lack of resources, but because of mismanagement and exploitation and redlining. Our chapter organizes regular outings to understand the problems and fight for change.
@@ -372,14 +349,14 @@
             
             <div class="prop-img-container">
                 <img src="https://z-cdn-media.chatglm.cn/files/bb316243-7689-4c37-8f69-7e7de9d69d33.jpg?auth_key=1866800258-52be6d35887a4b1b80905ee78cc8bf1d-0-7856cd4195114dec3dd8f78ba6c21fe3" alt="Alliance of Sahel States">
-                <div class="caption">Fig 2. The Alliance of Sahel States (AES) breaks the chains of ECOWAS.</div>
+                <div class="caption">Fig 2. The Alliance of Sahel States (AES) breaks of chains of ECOWAS.</div>
             </div>
 
             <p>
-                The Trenton M.A.K.E.S chapter stands in full solidarity with the <strong>Alliance of Sahel States (AES)</strong>. The recent formation of this confederation—Mali, Burkina Faso, and Niger—marks a decisive break from neocolonial structures like ECOWAS and the Françafrique monetary system.
+                The Trenton M.A.K.E.S chapter stands in full solidarity with <strong>Alliance of Sahel States (AES)</strong>. The recent formation of this confederation—Mali, Burkina Faso, and Niger—marks a decisive break from neocolonial structures like ECOWAS and Françafrique monetary system.
             </p>
             <p>
-                Imperialist media labels these nations as "unstable," yet we see the rapid reclamation of sovereignty. Under the leadership of Captain Ibrahim Traoré, Burkina Faso has demonstrated that true independence leads to rapid development.
+                Imperialist media labels these nations as "unstable," yet we see, rapid reclamation of sovereignty. Under the leadership of Captain Ibrahim Traoré, Burkina Faso has demonstrated that true independence leads to rapid development.
             </p>
 
             <!-- STAT BOX -->
@@ -393,13 +370,13 @@
             </div>
 
             <p>
-                This massive infrastructure investment is not for the extraction of wealth for Paris, but for the connection of the Burkinabé people. We salute this military alliance as a necessary shield against Western aggression and a model for the Global South.
+                This massive infrastructure investment is not for the extraction of wealth for Paris, but for the connection of Burkinabé people. We salute this military alliance as a necessary shield against Western aggression and a model for the Global South.
             </p>
 
             <!-- SECTION 3 -->
             <h2 id="imperialism">3. Combatting Local Imperialist Collaboration</h2>
             <p>
-                While our communities crumble, the state of New Jersey actively collaborates with the Zionist apartheid regime through the <strong>NJ-Israel Commission</strong>. This is a clear example of local imperialism. Trade is prioritized over human rights, and our tax dollars are used to fund oppression abroad.
+                While our communities crumble, state of New Jersey actively collaborates with the Zionist apartheid regime through <strong>NJ-Israel Commission</strong>. This is a clear example of local imperialism. Trade is prioritized over human rights, and our tax dollars are used to fund oppression abroad.
             </p>
             <p>
                 We stand against all forms of imperialist aggression. The struggle in Trenton is directly linked to the struggle in Palestine. We oppose policies that normalize these relations.
@@ -437,13 +414,11 @@
     <!-- FOOTER -->
     <footer class="footer">
         <p>
-            &copy; 2024 Trenton M.A.K.E.S | NJ BURN<br>
+            &copy; 2025 Trenton M.A.K.E.S<br>
             <span style="font-size: 0.7rem; opacity: 0.8;"> New Jersey </span>
         </p>
         <div style="font-size: 0.7rem; margin-top: 10px;">
-            <a href="#" style="color: #fff;">Privacy Policy</a> | 
-            <a href="#" style="color: #fff;">Site Map</a> | 
-            <a href="#" style="color: #fff;">Contact Webmaster</a>
+            
         </div>
     </footer>
 

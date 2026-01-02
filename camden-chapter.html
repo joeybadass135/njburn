@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NJ BURN - Camden Chapter</title>
+    <style>
+        /* =========================================
+           WEB 1.5 BASE STYLES
+           ========================================= */
+        :root {
+            --camden-red: #8B0000;
+            --rust: #b7410e;
+            --concrete: #555;
+            --link-blue: #0000EE;
+            --bg-color: #dcdcdc;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0; padding: 0;
+            font-family: "Times New Roman", Times, serif;
+            background-color: var(--bg-color);
+            background-image: url('data:image/svg+xml;utf8,<svg width="4" height="4" viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="2" height="2" fill="%23ccc" /></svg>');
+            color: black;
+        }
+
+        a { color: var(--link-blue); text-decoration: underline; }
+        a:hover { background-color: yellow; text-decoration: none; }
+        
+        .container {
+            max-width: 960px; margin: 10px auto; border: 3px ridge #888;
+            background-color: white; box-shadow: 5px 5px 0px #000;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: 90vh;
+        }
+        
+        /* HEADER */
+        header {
+            background-color: black; color: white; padding: 15px; text-align: center;
+            border-bottom: 4px solid var(--camden-red);
+        }
+        
+        h1 {
+            font-family: "Courier New", monospace; font-weight: bold; font-size: 2rem;
+            text-shadow: 3px 3px 0px var(--rust); margin: 0;
+        }
+        
+        .marquee-wrap {
+            background: var(--camden-red); color: white; border-top: 1px solid white;
+            border-bottom: 1px solid white; padding: 2px 0; font-family: "Courier New", monospace;
+        }
+
+        /* LAYOUT */
+        .main-layout { display: flex; }
+
+        aside {
+            width: 200px; background-color: #e0e0e0; border-right: 3px ridge #999;
+            padding: 15px; text-align: center;
+            background-image: repeating-linear-gradient(45deg, #ddd, #ddd 10px, #ccc 10px, #ccc 20px);
+        }
+
+        .sidebar-btn {
+            display: block; width: 100%; margin-bottom: 10px;
+            background: #ddd; border: 2px outset white; padding: 5px;
+            text-decoration: none; color: black; font-weight: bold; font-family: Arial, sans-serif;
+        }
+        .sidebar-btn:active { border: 2px inset white; }
+
+        main { flex: 1; padding: 20px; background-color: #fff; overflow-y: auto; }
+
+        /* =========================================
+           SIMPLIFIED SCENE (SKYLINE + RIVER + TRAIN)
+           ========================================= */
+        .scene-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border: 4px solid black;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #1a1a2e 0%, #4a69bd 70%, #4a69bd 100%); 
+        }
+
+        /* 1. PHILLY SKYLINE (Silhouette) */
+        .philly-skyline {
+            position: absolute; bottom: 100px; left: 0; width: 100%;
+            display: flex; align-items: flex-end; justify-content: center; z-index: 1; opacity: 0.7;
+        }
+        .philly-b { background: #000; width: 40px; margin: 0 2px; }
+        .p-h1 { height: 120px; } .p-h2 { height: 160px; } .p-h3 { height: 140px; }
+
+        /* 2. THE RIVER */
+        .river {
+            position: absolute; bottom: 60px; left: 0; width: 100%; height: 40px;
+            background: #0c2461; z-index: 2;
+            border-top: 2px solid #4a69bd;
+        }
+
+        /* 3. THE STREET / GROUND LEVEL */
+        .street {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 60px;
+            background: #333; /* Asphalt */
+            border-top: 4px solid #555;
+            z-index: 10;
+            background-image: linear-gradient(90deg, transparent 0%, transparent 90%, rgba(255,255,255,0.1) 90%, rgba(255,255,255,0.1) 100%);
+            background-size: 100px 100%; /* Street markings simulation */
+        }
+        
+        /* 4. THE RIVERLINE TRAIN */
+        .train-track {
+            position: absolute; bottom: 55px; left: 0; width: 100%; height: 4px;
+            background: #777; z-index: 11;
+        }
+        .train {
+            position: absolute; bottom: 58px; left: -150px;
+            width: 110px; height: 30px;
+            background: linear-gradient(to bottom, #d1d8e0 0%, #a5b1c2 100%);
+            border: 1px solid #000;
+            border-radius: 3px 3px 0 0;
+            z-index: 12;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 8px; font-weight: bold; color: #003366;
+            animation: rideTrain 10s linear infinite;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .train::after {
+            content: ''; position: absolute; top: 10px; left: 0; right: 0; height: 3px; background: #003366;
+        }
+        @keyframes rideTrain {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+
+        /* TEXT STYLES */
+        h2 { color: var(--camden-red); border-bottom: 2px solid black; }
+        footer { background: #eee; border-top: 3px ridge #888; padding: 10px; text-align: center; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>NJ BURN: CAMDEN</h1>
+        <div style="font-family: Courier New; font-size: 0.8rem; color: #aaa;">CHAPTER EST. 2024</div>
+    </header>
+    
+    <div class="marquee-wrap">
+        <marquee scrollamount="5">
+            *** WATCHING FROM THE WATERFRONT *** RIVERLINE OPERATIONAL *** SOLIDARITY ACROSS THE RIVER ***
+        </marquee>
+    </div>
+
+    <div class="main-layout">
+        <aside>
+            <h3 style="margin-top:0;">NAVIGATION</h3>
+            <a href="index.html" class="sidebar-btn">[ HOME ]</a>
+            <a href="#" class="sidebar-btn">[ EVENTS ]</a>
+            <a href="#" class="sidebar-btn">[ VOLUNTEER ]</a>
+            <a href="#" class="sidebar-btn">[ DONATE ]</a>
+            <hr style="border: 1px solid #999;">
+            <p style="font-size: 0.8rem; text-align: center;">
+                <strong>CAMDEN HQ</strong><br>
+                Near the Riverline<br>
+                Cooper St. Exit
+            </p>
+        </aside>
+
+        <main>
+            <h2>THE WATERFRONT WATCH</h2>
+            <p>
+                From the edge of the Delaware, we watch the city across the water. 
+                The Riverline runs constantly, connecting our struggles to the rest of the state.
+                We keep our eyes on the tracks and the water.
+            </p>
+
+            <!-- THE ANIMATION SCENE -->
+            <div class="scene-container">
+                
+                <!-- Background Skyline -->
+                <div class="philly-skyline">
+                    <div class="philly-b p-h1"></div><div class="philly-b p-h2"></div>
+                    <div class="philly-b p-h1"></div><div class="philly-b p-h3"></div>
+                    <div class="philly-b p-h2"></div><div class="philly-b p-h1"></div>
+                </div>
+
+                <!-- The River -->
+                <div class="river"></div>
+
+                <!-- The Street -->
+                <div class="street"></div>
+                <div class="train-track"></div>
+
+                <!-- The Train -->
+                <div class="train">NJ TRANSIT</div>
+
+            </div>
+
+            <h3>Chapter Updates</h3>
+            <ul>
+                <li><strong>Riverline Patrol:</strong> We are monitoring the stops for our people.</li>
+                <li><strong>Food Drive:</strong> Distribution happening at the corner of Broadway.</li>
+                <li><strong>Safe House:</strong> We have secured a location near the water.</li>
+            </ul>
+
+            <br>
+            <p style="font-family: monospace; border: 1px dashed black; padding: 5px;">
+                WE RISE FROM THE RIVER.
+            </p>
+        </main>
+    </div>
+
+    <footer>
+        <a href="index.html">Back to Home</a> | <a href="#">Contact Webmaster</a><br>
+        &copy; 2024 NJ BURN Camden Chapter.
+    </footer>
+</div>
+
+</body>
+</html>

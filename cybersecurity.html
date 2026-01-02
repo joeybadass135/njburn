@@ -31,10 +31,33 @@
         aside {
             width: 220px; background-color: black; border-right: 2px solid var(--term-green); padding: 15px;
         }
-        .sidebar-title { color: var(--term-green); border-bottom: 1px solid var(--term-dim); margin-bottom: 10px; padding-bottom: 5px; }
+        /* --- CSS FOR TOGGLE --- */
+        .menu-btn {
+            width: 100%;
+            background: #000;
+            color: var(--term-green);
+            border: 1px solid var(--term-green);
+            padding: 10px;
+            margin-bottom: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 0px var(--term-dim);
+        }
+        .menu-btn:hover {
+            background: var(--term-green);
+            color: black;
+        }
+        .hidden {
+            display: none;
+        }
+        /* -------------------------- */
+
         .nav-list { list-style-type: none; padding: 0; }
         .nav-list li { margin-bottom: 10px; padding-left: 5px; border-left: 2px solid var(--alert-red); }
         .nav-list li:hover { border-left-color: var(--term-green); background-color: #111; }
+        
         main { flex: 1; padding: 25px; background-color: var(--panel-grey); }
         h1, h2, h3 { color: var(--term-green); border-bottom: 1px dashed var(--term-dim); padding-bottom: 5px; }
         .alert-box { border: 2px solid var(--alert-red); background-color: #2a0000; color: white; padding: 15px; margin: 20px 0; }
@@ -45,6 +68,46 @@
         li { margin-bottom: 8px; }
         .secure-highlight { color: var(--term-green); font-weight: bold; }
         .insecure-highlight { color: var(--alert-red); text-decoration: line-through; font-weight: bold; }
+        
+        /* DOWNLOAD MENU STYLES */
+        .download-toggle-btn {
+            background: #000;
+            color: var(--term-green);
+            border: 2px outset var(--term-green);
+            padding: 15px 30px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+        .download-toggle-btn:hover {
+            background: var(--term-green);
+            color: black;
+        }
+        .download-list {
+            background-color: black;
+            border: 2px solid var(--term-green);
+            margin: 10px auto;
+            max-width: 500px;
+            text-align: left;
+            padding: 10px;
+        }
+        .download-list a {
+            display: block;
+            padding: 8px;
+            border-bottom: 1px dashed var(--term-dim);
+            text-decoration: none;
+            color: white;
+        }
+        .download-list a:hover {
+            background-color: var(--term-green);
+            color: black;
+        }
+        .download-list a:last-child {
+            border-bottom: none;
+        }
+
         footer {
             background-color: black; color: var(--term-dim); text-align: center; padding: 20px;
             border-top: 4px solid var(--term-green); font-size: 0.8rem;
@@ -68,18 +131,17 @@
     </div>
     <div class="main-layout">
         <aside>
-            <div class="sidebar-title">>> MENU</div>
-            <ul class="nav-list">
+            <!-- BUTTON IS NOW FIRST -->
+            <button class="menu-btn" onclick="toggleMenu()">[ ACCESS MENU ]</button>
+
+            <!-- LIST IS HIDDEN BY DEFAULT (class="nav-list hidden") -->
+            <ul id="menuList" class="nav-list hidden">
                 <li><a href="index.html">>> Home</a></li>
-                <li><a href="#">>> Threats</a></li>
-                <li><a href="#">>> Solutions</a></li>
-                <li><a href="#">>> Encryption</a></li>
-                <li><a href="#">>> Contact</a></li>
+                <!-- UPDATED LINKS BELOW -->
+                <li><a href="https://lumpencamp.github.io/civic-security/digital-security/threat_modeling_guide.html" target="_blank">>> Threat Modeling</a></li>
+                <li><a href="https://automate-that.io/Homelab/getting-started/" target="_blank">>> Homelab</a></li>
+                <li><a href="https://www.youtube.com/watch?v=SvFyd8DpRkw" target="_blank">>> Internet of Things</a></li>
             </ul>
-            <br>
-            <div style="border: 1px solid var(--term-green); padding: 10px; font-size: 0.8rem;">
-                <strong>STATUS:</strong><br>MONITORING: ACTIVE<br>ENCRYPTION: NULL
-            </div>
         </aside>
         <main>
             <h1>The Reality of Surveillance</h1>
@@ -103,6 +165,14 @@
             <hr style="border-color: var(--term-green);">
             <h1>The Only Secure Operating Systems</h1>
             <p>There are only three operating systems that respect your freedom and security. Do not use anything else.</p>
+            
+            <!-- NEW ADDED TEXT -->
+            <div style="background: #002200; border: 1px solid var(--term-green); padding: 15px; margin-bottom: 20px; text-align: center;">
+                <strong>OPEN & FREE:</strong> All of these softwares listed below are <strong>free and open source</strong>. 
+                This means anyone can investigate the code to verify there are no backdoors. 
+                This is a massive advantage over Android, Windows, and Mac which are proprietary and black-boxed.
+            </div>
+
             <div class="os-card">
                 <h3>1. QUBES OS</h3>
                 <p><em>For maximum compartmentalization.</em></p>
@@ -134,19 +204,39 @@
                     <li><strong>Best for:</strong> Daily phone use without being tracked by Google/Apple.</li>
                 </ul>
             </div>
-             <div class="VPN'S">
-                <h3>3. Mullvad and Proton /h3>
-                <p><em>Whenever you search something online, your Wifi router reports your search to your ISP (Internet service provider) and reports your IP address</em></p>
+             <div class="os-card">
+                <h3>4. UBUNTU LINUX</h3>
+                <p><em>For beginners and ease of use.</em></p>
                 <ul>
-                    <li>Using a VPN prevents your location and IP adress from being seen </li>
-                    <li>For a free VPN try Proton, while if you are looking for a higher security Mullvad VPN is a good option</li>
-                  
-                    <li><strong>Best for:</strong> Any user on a computer</li>
+                    <li>Incredibly easy to use and install.</li>
+                    <li>Less secure than Qubes/Tails/Graphene, but much better than Windows/Mac.</li>
+                    <li>Recommended for beginners transitioning from Windows.</li>
+                    <li><strong>Best for:</strong> Learning Linux in a safe, user-friendly environment.</li>
                 </ul>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="#" style="background-color: var(--term-green); color: black; padding: 10px 20px; text-decoration: none; font-weight: bold; border: 2px outset white;">[ DOWNLOAD ISOs ]</a>
+             <div class="vpn-section">
+                <h3>VPNs: Mullvad and Proton</h3>
+                <p><em>Whenever you search something online, your Wifi router reports your search to your ISP (Internet service provider) and reports your IP address.</em></p>
+                <ul>
+                    <li>Using a VPN prevents your location and IP adress from being seen.</li>
+                    <li>For a free VPN try Proton, while if you are looking for a higher security Mullvad VPN is a good option.</li>
+                    <li><strong>Best for:</strong> Any user on a computer.</li>
+                </ul>
             </div>
+
+            <!-- NEW DOWNLOAD MENU -->
+            <div style="text-align: center; margin-top: 40px; padding-bottom: 20px;">
+                <button id="dlBtn" class="download-toggle-btn" onclick="toggleDownloads()">[ DOWNLOAD ISOs ]</button>
+                
+                <!-- HIDDEN DOWNLOAD LIST -->
+                <div id="dlList" class="download-list hidden">
+                    <a href="https://grapheneos.org/install/web#prerequisites" target="_blank">>> INSTALL GRAPHENEOS</a>
+                    <a href="https://tails.net/install/index.en.html" target="_blank">>> INSTALL TAILS</a>
+                    <a href="https://www.qubes-os.org/downloads/" target="_blank">>> INSTALL QUBES</a>
+                    <a href="https://documentation.ubuntu.com/desktop/en/latest/how-to/create-a-bootable-usb-stick/" target="_blank">>> INSTALL UBUNTU</a>
+                </div>
+            </div>
+            
         </main>
     </div>
     <footer>
@@ -155,5 +245,19 @@
         <p><a href="index.html"><< RETURN TO MAIN SITE</a></p>
     </footer>
 </div>
+
+<!-- JAVASCRIPT TO TOGGLE MENUS -->
+<script>
+function toggleMenu() {
+    var list = document.getElementById("menuList");
+    list.classList.toggle("hidden");
+}
+
+function toggleDownloads() {
+    var list = document.getElementById("dlList");
+    list.classList.toggle("hidden");
+}
+</script>
+
 </body>
 </html>

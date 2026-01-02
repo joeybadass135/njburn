@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NJ BURN - Bergen County Edition</title>
+    <style>
+        /* --- RETRO WEB 1.5 BASE STYLES --- */
+        :root {
+            --bg-color: #000033;
+            --text-color: #e0e0e0;
+            --link-color: #00ff00;
+            --visited-link: #55aa55;
+            --border-light: #888888;
+            --border-dark: #444444;
+            --neon-blue: #00ffff;
+            --neon-pink: #ff00ff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Verdana", "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* Tiled background texture effect */
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                              repeating-linear-gradient(0deg, transparent, transparent 2px, #000 3px),
+                              url('https://picsum.photos/seed/concrete/100/100');
+            background-attachment: fixed;
+        }
+
+        /* Layout simulating an old Frameset */
+        .wrapper {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-rows: 80px 1fr 60px;
+            height: 100vh;
+            gap: 5px;
+            padding: 5px;
+            border: 5px ridge #444;
+        }
+
+        /* --- HEADER --- */
+        header {
+            grid-column: 1 / -1;
+            background-color: #000066;
+            border: 3px outset #888;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: "Courier New", monospace;
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            text-shadow: 2px 2px #00ff00;
+            margin: 0;
+            letter-spacing: -2px;
+        }
+
+        .marquee-container {
+            flex-grow: 1;
+            margin-left: 20px;
+            background: black;
+            border: 2px inset #555;
+            color: var(--neon-blue);
+            font-family: "Courier New", monospace;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR NAV --- */
+        aside {
+            grid-row: 2 / 3;
+            background-color: #cccccc;
+            color: black;
+            border: 3px inset #888;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            display: block;
+            margin: 10px 0;
+            background: #e0e0e0;
+            border: 2px outset #fff;
+            text-decoration: none;
+            color: #0000aa;
+            font-weight: bold;
+            padding: 5px;
+            font-family: "Arial Narrow", sans-serif;
+        }
+
+        nav a:active {
+            border: 2px inset #fff;
+        }
+
+        .hit-counter {
+            margin-top: 30px;
+            background: black;
+            color: red;
+            font-family: "Courier New", monospace;
+            padding: 2px;
+            border: 2px inset #555;
+            letter-spacing: 2px;
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        main {
+            grid-row: 2 / 3;
+            border: 3px inset #888;
+            padding: 15px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        p {
+            line-height: 1.4;
+        }
+
+        .section-title {
+            background: #000066;
+            color: white;
+            padding: 2px 5px;
+            font-weight: bold;
+            border-bottom: 2px solid var(--neon-blue);
+            margin-top: 20px;
+        }
+
+        /* --- ANIMATIONS: SKYSCRAPERS --- */
+        .skyline-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 200px;
+            border-bottom: 5px solid #555;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #000011 0%, #222244 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .building {
+            width: 40px;
+            background: #222;
+            border: 1px solid #444;
+            margin: 0 2px;
+            position: relative;
+            box-shadow: inset 0 0 10px black;
+        }
+
+        /* Windows */
+        .building::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            background-image: radial-gradient(#ffff00 1px, transparent 1px);
+            background-size: 6px 8px;
+            opacity: 0.6;
+        }
+
+        .b-tall { height: 180px; width: 50px; z-index: 1; }
+        .b-med { height: 120px; z-index: 2; }
+        .b-short { height: 80px; width: 60px; z-index: 3; }
+        
+        /* Specific building styles */
+        .empire { background: #1a1a2e; border-left: 5px solid #333; }
+        .modern { background: #0f0f1a; border-top: 10px solid #333; }
+
+        /* --- ANIMATIONS: TRAINS --- */
+        .train-track {
+            position: relative;
+            height: 60px;
+            background: #333;
+            border-top: 4px solid #666;
+            border-bottom: 4px solid #666;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .train {
+            position: absolute;
+            top: 10px;
+            height: 30px;
+            width: 120px;
+            background: linear-gradient(90deg, #ffffff 0%, #cccccc 50%, #ffffff 100%);
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 10px;
+            font-weight: bold;
+            color: black;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            animation: moveTrain 8s linear infinite;
+        }
+
+        .train::after {
+            /* Stripe */
+            content: '';
+            position: absolute;
+            top: 10px; left: 0; right: 0;
+            height: 5px;
+            background: #ff0000;
+        }
+
+        @keyframes moveTrain {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+
+        /* --- ANIMATIONS: HIGHWAY TRAFFIC --- */
+        .highway-container {
+            position: relative;
+            height: 120px;
+            background: #1a1a1a;
+            border: 3px solid #555;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .road-lane {
+            position: absolute;
+            left: 0; right: 0;
+            height: 2px;
+            background: #fff;
+            top: 50%;
+            box-shadow: 0 40px 0 #fff, 0 -40px 0 #fff;
+        }
+
+        .car {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            border-radius: 3px;
+            box-shadow: 0 0 2px white;
+        }
+
+        /* Lane positions */
+        .lane-1 { top: 20px; } /* Slow lane */
+        .lane-2 { top: 50px; }
+        .lane-3 { top: 80px; } /* Fast lane */
+
+        /* Car types */
+        .sedan { background: red; }
+        .truck { background: blue; width: 50px; height: 20px; top: 15px; }
+        .taxi { background: yellow; }
+
+        /* Car Animations */
+        .c1 { animation: drive 6s linear infinite; }
+        .c2 { animation: drive 4s linear infinite; animation-delay: 1s; }
+        .c3 { animation: drive 5s linear infinite; animation-delay: 2.5s; }
+        .c4 { animation: drive-rev 7s linear infinite; } /* Wrong way! */
+        .c5 { animation: drive 3s linear infinite; animation-delay: 0.5s; }
+
+        @keyframes drive {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+        @keyframes drive-rev {
+            0% { left: 100%; transform: scaleX(-1); }
+            100% { left: -100px; transform: scaleX(-1); }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            grid-column: 1 / -1;
+            background-color: #cccccc;
+            color: black;
+            border: 3px inset #888;
+            text-align: center;
+            padding-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Blink tag simulation (web 1.5 classic) */
+        .blink {
+            animation: blinker 1s linear infinite;
+            color: red;
+            font-weight: bold;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        /* Marquee simulation */
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 700px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr auto;
+                height: auto;
+            }
+            .skyline-container { height: 150px; }
+            aside { display: none; /* Hide sidebar on mobile for pure content view */ }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- HEADER -->
+    <header>
+        <h1>NJ BURN</h1>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                *** WELCOME TO THE BERGEN COUNTY BURN *** WATCH OUT FOR TRAFFIC ON RT 17 *** NJ TRANSIT DELAYS REPORTED *** CONSTRUCTION ON THE GARDEN STATE PARKWAY NORTHBOUND *** THIS IS THE MOST URBAN CHAPTER  ***
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside>
+        <div style="margin-bottom: 15px; border: 2px solid #000; padding: 5px; background: white;">
+            <img src="https://picsum.photos/seed/train/150/100" alt="Train Icon" style="width:100%">
+        </div>
+        <nav>
+            <a href="index.html">[ Home]</a>
+            <a href="#">[ Outings]</a>
+            <a href="#">[ Traffic Cams ]</a>
+            <a href="#">[ Train Schedule ]</a>
+        </nav>
+        <br>
+        <p style="font-size: 0.8rem;">You are visitor:</p>
+        <div class="hit-counter">014832</div>
+        <br>
+        <p style="font-size: 0.7rem;">Best viewed in<br>Netscape Navigator 4.0<br>800x600</p>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <p class="blink">*** UPDATE: WE ARE LOOKING FOR NEW RECRUITS FOR THE NORTH JERSEY BRANCH ***</p>
+
+        <!-- Section: Skyline -->
+        <div class="section-title">SKYSCRAPERS OF THE MEADOWLANDS</div>
+        <div class="skyline-container">
+            <div class="building b-tall empire"></div>
+            <div class="building b-med"></div>
+            <div class="building b-short"></div>
+            <div class="building b-tall modern"></div>
+            <div class="building b-med"></div>
+            <div class="building b-short"></div>
+            <div class="building b-tall"></div>
+            <div class="building b-med"></div>
+            <div class="building b-short"></div>
+            <div class="building b-tall empire"></div>
+        </div>
+        <p>Welcome to the Bergen county. We are tracking the Gentrification of Northern NJ. From Paramus to Fort Lee, the skyline never sleeps.</p>
+
+        <!-- Section: Trains -->
+        <div class="section-title">THE COMMUTE (NJ TRANSIT)</div>
+        <div class="train-track">
+            <div class="train">NJ TRANSIT</div>
+        </div>
+        <p>Whether you are taking the Bergen County Line or the Bus into Port Authority, the grind never stops. Catch the rail below.</p>
+
+        <!-- Section: Traffic -->
+        <div class="section-title">HIGHWAY TRAFFIC & JAMS</div>
+        <div class="highway-container">
+            <div class="road-lane"></div>
+            
+            <!-- Cars -->
+            <div class="car sedan lane-3 c1"></div>
+            <div class="car truck lane-1 c2"></div>
+            <div class="car taxi lane-2 c3"></div>
+            <div class="car sedan lane-2 c4"></div> <!-- Going wrong way for chaos -->
+            <div class="car sedan lane-3 c5"></div>
+        </div>
+        <p>Route 4, Route 17, and the Parkway are gridlocked. Navigate the asphalt jungle carefully. The burn is real.</p>
+
+        <br>
+        <p><i>Page last updated: October 24, 2003</i></p>
+        <br>
+        <a href="#">Back to Top</a>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright © 1999-2003 NJ BURN Designs. All rights reserved.</p>
+        <p>Not affiliated with NJDOT or NJ Transit.</p>
+        <p>Hosted on GeoCities - Neighborhood: /PaloAlto/1400</p>
+    </footer>
+</div>
+
+</body>
+</html>
