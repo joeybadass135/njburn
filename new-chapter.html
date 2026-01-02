@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start a New Chapter - NJ BURN</title>
+    <title>JOIN NJ BURN</title>
     <style>
         /* RETRO CONTACT THEME */
         body {
@@ -27,26 +27,40 @@
         }
         .submit-btn:active { border-style: inset; }
         a.back-link { display: block; text-align: center; margin-top: 20px; font-size: 1.2rem; }
+        
+        /* Styling for the thank you message after submission */
+        #thank-you-msg {
+            display: none; background: #e0ffe0; border: 2px solid green; padding: 10px; margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>START A NEW CHAPTER</h1>
-    <p>We are looking to expand NJ BURN to every corner of state. If you want to organize your town, fill out the form below.</p>
+    <h1>JOIN NJ BURN</h1>
+    <p>We are looking to expand NJ BURN to every corner of state. If you want to organize in your town, fill out the form below. If you want to join a currently existing chapter, fill out the form</p>
     
-    <!-- We removed the external action and added a JavaScript function -->
-    <form onsubmit="sendEmail(event)">
+    <!-- 
+       IMPORTANT: 
+       1. Go to formspree.io and sign up.
+       2. Create a form for email: nj.burn@proton.me
+       3. Paste your unique URL below where it says "https://formspree.io/f/YOUR_FORMSPREE_ID"
+    -->
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
         <div class="form-group">
             <label for="name">NAME / ALIAS:</label>
             <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">EMAIL ADDRESS:</label>
+            <input type="email" id="email" name="_replyto" required>
         </div>
         <div class="form-group">
             <label for="location">CITY / TOWN:</label>
             <input type="text" id="location" name="location" required>
         </div>
         <div class="form-group">
-            <label for="contact">EMAIL OR SIGNAL:</label>
-            <input type="text" id="contact" name="contact" required>
+            <label for="contact">SIGNAL / ALTERNATIVE CONTACT:</label>
+            <input type="text" id="contact" name="contact">
         </div>
         <div class="form-group">
             <label for="message">WHY DO YOU WANT TO ORGANIZE?</label>
@@ -57,6 +71,12 @@
         </div>
     </form>
     
+    <!-- This message will appear after successful submission -->
+    <div id="thank-you-msg">
+        <strong>MESSAGE SENT.</strong><br>
+        We have received your request. Stay tuned for a signal.
+    </div>
+    
     <div style="margin-top: 30px; border-top: 1px dotted black; padding-top: 10px;">
         <strong>SECURE CONTACT INFO:</strong><br>PGP Key Available upon request.<br>Or email: nj.burn@proton.me
     </div>
@@ -64,25 +84,16 @@
 </div>
 
 <script>
-    function sendEmail(event) {
-        // 1. Stop the page from refreshing
-        event.preventDefault();
-
-        // 2. Get the values from the inputs
-        var name = document.getElementById('name').value;
-        var location = document.getElementById('location').value;
-        var contact = document.getElementById('contact').value;
-        var message = document.getElementById('message').value;
-
-        // 3. Format the email body
-        var body = "Name/Alias: " + name + 
-                   "%0D%0ALocation: " + location + 
-                   "%0D%0AContact: " + contact + 
-                   "%0D%0A%0D%0AMessage:%0D%0A" + message;
-
-        // 4. Open the user's email client
-        window.location.href = "mailto:nj.burn@proton.me?subject=New Chapter Request&body=" + body;
-    }
+    // Simple script to show a message after submission
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        // We let Formspree handle the actual submission
+        // But we detect when the user clicks submit to show UI feedback
+        setTimeout(() => {
+            document.getElementById('thank-you-msg').style.display = 'block';
+            form.reset();
+        }, 1000); 
+    });
 </script>
 
 </body>
